@@ -1,0 +1,113 @@
+﻿using System;
+using System.Linq;
+using System.Web.UI.WebControls;
+
+public partial class Admin_Lookups : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+        }
+        
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int lookup = Convert.ToInt32(DropDownListLookups.SelectedValue);
+        var adapter = new AutologiaDL.MainLookup();
+        try
+        {
+            AutologiaDL.MainLookup row = adapter.GetData().Find(a=>a.ID == lookup);
+            TextBoxDescription.Text = row.MANUAL == null ? "" : row.MANUAL;
+            DropDownListMain.SelectedValue = row.MENU_REF_ID == null ? "1" : row.MENU_REF_ID.ToString();
+            RefreshLookupDetails();
+
+            DropDownListTypes.SelectedValue = "0";
+            TextBoxNewLookupDetail.Text = string.Empty;
+        }
+        catch (Exception)
+        {
+        }
+
+    }
+
+    private void RefreshLookupDetails()
+    {
+        int lookup = Convert.ToInt32(DropDownListLookups.SelectedValue);
+        var adapter = new AutologiaDL.LookupDetails();
+        ListBoxLookupDetails.DataSource = from p in adapter.GetData() where p.MAIN_LOOKUP_ID == lookup orderby p.ID select p;
+        ListBoxLookupDetails.DataBind();
+    }
+
+    protected void DropDownList1_DataBound(object sender, EventArgs e)
+    {
+        RefreshLookupDetails();
+    }
+
+    protected void NewLookupDetail(object sender, EventArgs e)
+    {
+        int lookup = Convert.ToInt32(DropDownListLookups.SelectedValue);
+
+        var adapter = new AutologiaDL.LookupDetails();
+        adapter.Insert(lookup, TextBoxNewLookupDetail.Text, TextBoxLookupDetailDescription.Text, null);
+        RefreshLookupDetails();
+    }
+
+    protected void DeleteLookupDetail(object sender, EventArgs e)
+    {
+        var adapter = new AutologiaDL.LookupDetails();
+        adapter.Delete(Convert.ToInt32(ListBoxLookupDetails.SelectedValue));
+        RefreshLookupDetails();
+    }
+
+    protected void UpdateLookupDetail(object sender, EventArgs e)
+    {
+        int lookupDetailId = Convert.ToInt32(ListBoxLookupDetails.SelectedValue);
+
+        var adapter = new AutologiaDL.LookupDetails();
+        try
+        {
+            adapter.Update(lookupDetailId, TextBoxNewLookupDetail.Text, TextBoxLookupDetailDescription.Text);
+            RefreshLookupDetails();
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    protected void LookupDetailSelected(object sender, EventArgs e)
+    {
+        var adapter = new AutologiaDL.LookupDetails();
+        try
+        {
+            if (ListBoxLookupDetails.SelectedItem != null)
+            {
+                AutologiaDL.LookupDetails row = adapter.GetData().Find(a=>a.ID == Convert.ToInt32(ListBoxLookupDetails.SelectedValue));
+                TextBoxNewLookupDetail.Text = row.VALUE == null ? "" : row.VALUE;
+                TextBoxLookupDetailDescription.Text = row.DESCRIPTION == null ? "" : row.DESCRIPTION;
+            }
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    protected void UpdateLookup(object sender, EventArgs e)
+    {
+        int lookupId = Convert.ToInt32(DropDownListLookups.SelectedValue);
+
+        var adapter = new AutologiaDL.MainLookup();
+        try
+        {
+            adapter.Update(lookupId, TextBoxDescription.Text, DropDownListMain.SelectedValue, DropDownListTypes.SelectedValue);
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    protected void TypesDataBound(object sender, EventArgs e)
+    {
+        DropDownListTypes.Items.Insert(0, new ListItem("", "0"));
+    }
+}

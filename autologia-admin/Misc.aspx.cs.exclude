@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using AutologiaBL;
+
+public partial class Admin_Misc : System.Web.UI.Page
+{
+    private General general;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        general = new General();
+
+        if (!IsPostBack)
+        {
+            RefreshJoinReasons();
+        }
+        Master.SetSelectedMenu(6);
+    }
+
+    private void RefreshJoinReasons()
+    {
+        List<AutologiaDL.Reasons> reasons = general.GetJoinReasons();
+        ListBoxJoinReasons.DataSource = reasons;
+        ListBoxJoinReasons.DataBind();
+        TextBoxReason.Text = string.Empty;
+    }
+
+    protected void UpdateReason(object sender, EventArgs e)
+    {
+        int id;
+        int.TryParse(ListBoxJoinReasons.SelectedValue, out id);
+        general.UpdateJoinReason(id, TextBoxReason.Text);
+        RefreshJoinReasons();
+    }
+
+    protected void NewReason(object sender, EventArgs e)
+    {
+        general.AddNewReason(TextBoxReason.Text);
+        RefreshJoinReasons();
+    }
+
+    protected void DeleteReason(object sender, EventArgs e)
+    {
+        int id;
+        int.TryParse(ListBoxJoinReasons.SelectedValue, out id);
+        general.DeleteJoinReason(id);
+        RefreshJoinReasons();
+    }
+
+    protected void JoinReasonSelected(object sender, EventArgs e)
+    {
+        TextBoxReason.Text = ListBoxJoinReasons.SelectedItem.Text;
+    }
+}

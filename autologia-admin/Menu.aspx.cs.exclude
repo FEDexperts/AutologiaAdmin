@@ -1,0 +1,77 @@
+﻿using System;
+using System.Web.UI.WebControls;
+using Menu = AutologiaBL.Menu;
+
+namespace Admin
+{
+    public partial class AdminMenu : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack) return;
+            ListBoxMenu1.SelectedIndex = 0;
+            ListBoxMenu2.SelectedIndex = 0;
+            SetManual();
+            SetSummeryEdit();
+            Master.SetSelectedMenu(5);
+        }
+
+        private void SetSummeryEdit()
+        {
+            int menuId;
+            int.TryParse(ListBoxMenu2.SelectedValue, out menuId);
+
+            bool summeryEdit = new Menu().GetSummeryEdit(menuId);
+            CheckBoxSummeryEdit.Checked = summeryEdit;
+
+            ButtonSaveMenu2.Enabled = menuId != 0;
+        }
+
+        protected void Menu1Selected(object sender, EventArgs e)
+        {
+            ListBoxMenu2.SelectedIndex = 0;
+        }
+
+        protected void Save(object sender, CommandEventArgs e)
+        {
+            Menu menu = new Menu();
+            switch (e.CommandName)
+            {
+                case "Save":
+                    switch (e.CommandArgument.ToString())
+                    {
+                        case "2":
+                            int menuId;
+                            int.TryParse(ListBoxMenu2.SelectedValue, out menuId);
+                            menu.SaveManual(menuId, TextBoxManual.Text);
+                            menu.SaveSummeryEdit(menuId, CheckBoxSummeryEdit.Checked);
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void SetManual()
+        {
+            int menuId;
+            int.TryParse(ListBoxMenu2.SelectedValue, out menuId);
+
+            string manual = new AutologiaBL.Menu().GetManual(menuId);
+            TextBoxManual.Text = manual;
+
+            ButtonSaveMenu2.Enabled = menuId != 0;
+        }
+
+        protected void Menu2Changed(object sender, EventArgs e)
+        {
+            SetManual();
+            SetSummeryEdit();
+        }
+
+        protected void Menu2Bound(object sender, EventArgs e)
+        {
+            SetManual();
+            SetSummeryEdit();
+        }
+    }
+}

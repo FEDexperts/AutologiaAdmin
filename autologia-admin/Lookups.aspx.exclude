@@ -1,0 +1,159 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="Lookups.aspx.cs" Inherits="Admin_Lookups" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div style="text-align: right">
+        <div class="right">
+            <fieldset>
+                <legend>מאפיין</legend>
+                <div>
+                    <asp:DropDownList ID="DropDownListLookups" runat="server" DataSourceID="ObjectDataSource1"
+                        DataTextField="DESCRIPTION" DataValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"
+                        OnDataBound="DropDownList1_DataBound">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetLookups"
+                        TypeName="AutologiaBL.General"></asp:ObjectDataSource>
+                </div>
+                <div>
+                    תאור</div>
+                <div>
+                    <asp:TextBox ID="TextBoxDescription" runat="server" TextMode="MultiLine" Rows="7" Width="300px"></asp:TextBox>
+                </div>
+                <br />
+                <div>משוייך לתפריט</div>
+                <div>
+                    <asp:DropDownList ID="DropDownListMain" runat="server" 
+                        DataSourceID="ObjectDataSource2" DataTextField="DESCRIPTION" 
+                        DataValueField="ID">
+                    </asp:DropDownList>
+
+                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
+                        InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" 
+                        SelectMethod="GetData" 
+                        TypeName="AutologiaDL.DataSets.DataSet1TableAdapters.MenuTableAdapter">
+                        <InsertParameters>
+                            <asp:Parameter Name="DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="ORDER" Type="Int32" />
+                        </InsertParameters>
+                    </asp:ObjectDataSource>
+
+                </div>
+                <div>משוייך למאפיין</div>
+                <div>
+                    <asp:DropDownList ID="DropDownListTypes" runat="server" 
+                        DataSourceID="ObjectDataSource3" DataTextField="DESCRIPTION" 
+                        DataValueField="ID" OnDataBound="TypesDataBound" AutoPostBack="True">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" 
+                        DeleteMethod="Delete" InsertMethod="Insert"
+                        OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
+                        TypeName="AutologiaDL.DataSets.DataSet1TableAdapters.MainLookupTableAdapter" 
+                        UpdateMethod="Update">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="Original_ACTIVE" Type="Boolean" />
+                            <asp:Parameter Name="Original_MENU_REF_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_MANUAL" Type="String" />
+                            <asp:Parameter Name="Original_VALUES_MANUAL" Type="String" />
+                            <asp:Parameter Name="Original_ORDER" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                            <asp:Parameter Name="DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="ACTIVE" Type="Boolean" />
+                            <asp:Parameter Name="MENU_REF_ID" Type="Int32" />
+                            <asp:Parameter Name="MANUAL" Type="String" />
+                            <asp:Parameter Name="VALUES_MANUAL" Type="String" />
+                            <asp:Parameter Name="ORDER" Type="Int32" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="ACTIVE" Type="Boolean" />
+                            <asp:Parameter Name="MENU_REF_ID" Type="Int32" />
+                            <asp:Parameter Name="MANUAL" Type="String" />
+                            <asp:Parameter Name="VALUES_MANUAL" Type="String" />
+                            <asp:Parameter Name="ORDER" Type="Int32" />
+                            <asp:Parameter Name="Original_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="Original_ACTIVE" Type="Boolean" />
+                            <asp:Parameter Name="Original_MENU_REF_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_MANUAL" Type="String" />
+                            <asp:Parameter Name="Original_VALUES_MANUAL" Type="String" />
+                            <asp:Parameter Name="Original_ORDER" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:ObjectDataSource>
+                </div>
+                <br />
+                <div>
+                    <asp:Button ID="ButtonUpdateLookup" runat="server" Text="עדכן" OnClick="UpdateLookup"
+                            CssClass="Button" />
+                </div>
+            </fieldset>
+        </div>
+        <div class="right" style="margin-right: 20px">
+            <fieldset>
+                <legend>פרטי מאפיינים</legend>
+                <div>מאפיין אב</div>
+                <div>
+                    <asp:DropDownList ID="DropDownListMainLookupDetails" runat="server" 
+                        DataSourceID="ObjectDataSource4" DataTextField="DESCRIPTION" 
+                        DataValueField="ID">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" 
+                        DeleteMethod="Delete" InsertMethod="Insert" 
+                        OldValuesParameterFormatString="original_{0}" SelectMethod="GetDataBy" 
+                        TypeName="AutologiaDL.DataSets.DataSet1TableAdapters.LookupDetailsTableAdapter" 
+                        UpdateMethod="Update">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="MAIN_LOOKUP_ID" Type="Int32" />
+                            <asp:Parameter Name="VALUE" Type="String" />
+                            <asp:Parameter Name="DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="PARENT_ID" Type="Int32" />
+                        </InsertParameters>
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="DropDownListTypes" Name="id" 
+                                PropertyName="SelectedValue" Type="Int32" />
+                        </SelectParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="MAIN_LOOKUP_ID" Type="Int32" />
+                            <asp:Parameter Name="VALUE" Type="String" />
+                            <asp:Parameter Name="DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="PARENT_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_MAIN_LOOKUP_ID" Type="Int32" />
+                            <asp:Parameter Name="Original_VALUE" Type="String" />
+                            <asp:Parameter Name="Original_DESCRIPTION" Type="String" />
+                            <asp:Parameter Name="Original_PARENT_ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:ObjectDataSource>
+                </div>
+                <br />
+                <div>
+                    <asp:ListBox ID="ListBoxLookupDetails" runat="server" DataTextField="VALUE" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="LookupDetailSelected" Width="365px" Height="100px"></asp:ListBox>
+                </div>
+                <div>
+                    <asp:TextBox ID="TextBoxNewLookupDetail" runat="server" Width="360px"></asp:TextBox>
+                </div>
+                <div>
+                    תאור</div>
+                <div>
+                    <asp:TextBox ID="TextBoxLookupDetailDescription" runat="server" TextMode="MultiLine" Rows="7" Width="360px"></asp:TextBox>
+                </div>
+                <br />
+                <div>
+                    <asp:Button ID="ButtonNew" runat="server" Text="חדש" OnClick="NewLookupDetail" CssClass="Button" />
+                    <asp:Button ID="ButtonUpdate" runat="server" Text="עדכן" OnClick="UpdateLookupDetail"
+                        CssClass="Button" />
+                    <asp:Button ID="ButtonDelete" runat="server" Text="מחק" OnClick="DeleteLookupDetail"
+                        CssClass="Button" />
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</asp:Content>

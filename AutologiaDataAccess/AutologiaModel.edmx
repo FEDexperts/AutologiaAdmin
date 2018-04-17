@@ -1,0 +1,2135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="autologiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.AdminUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.Answers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="SELECTED" Type="bit" />
+        </EntityType>
+        <EntityType Name="CarMainType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CarManufactors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="LOGO" Type="nvarchar" MaxLength="30" />
+          <Property Name="LINK" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="CarModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANUFACTOR_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.CarMultiAnswer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CarMultiAnswer">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="int" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="ANSWER_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="MANUFACTOR" />
+            <PropertyRef Name="MODEL" />
+            <PropertyRef Name="SUB_MODEL" />
+            <PropertyRef Name="YEAR" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANUFACTOR" Type="int" Nullable="false" />
+          <Property Name="MODEL" Type="int" Nullable="false" />
+          <Property Name="SUB_MODEL" Type="int" Nullable="false" />
+          <Property Name="YEAR" Type="int" Nullable="false" />
+          <Property Name="COUNTRY" Type="int" />
+          <Property Name="MAIN_TYPE" Type="int" />
+          <Property Name="SUB_TYPE" Type="int" />
+          <Property Name="LICENSE" Type="int" />
+          <Property Name="SEATS" Type="int" />
+          <Property Name="DORS" Type="int" />
+          <Property Name="FUEL_TYPE" Type="int" />
+          <Property Name="GEER" Type="int" Nullable="false" />
+          <Property Name="SIZE" Type="int" />
+          <Property Name="TRUNK" Type="int" />
+          <Property Name="ACCESSORY" Type="int" />
+          <Property Name="RESPONSE" Type="int" />
+          <Property Name="SEAT_5" Type="int" />
+          <Property Name="VISUAL_SPACE" Type="int" />
+          <Property Name="ROAD" Type="int" />
+          <Property Name="MAINTANANCE" Type="int" />
+          <Property Name="RELIABILITY" Type="int" />
+          <Property Name="TRADE" Type="int" />
+          <Property Name="VALUE" Type="int" />
+          <Property Name="SECURE" Type="int" />
+          <Property Name="GAS_COMPATIBLE" Type="int" />
+          <Property Name="IGNITION" Type="int" />
+          <Property Name="HEAT_STAND" Type="int" />
+          <Property Name="SMOKERS" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MULTI_DRIVER" Type="int" />
+          <Property Name="PRICE" Type="int" />
+          <Property Name="OPPINION_FOR" Type="nvarchar" MaxLength="100" />
+          <Property Name="OPPINION_AGAINST" Type="nvarchar" MaxLength="100" />
+          <Property Name="LINKS" Type="nvarchar" MaxLength="30" />
+          <Property Name="AVIRUT_SHETAH" Type="int" />
+          <Property Name="UNIQUE_IDENTIFIER" Type="nvarchar" MaxLength="200" />
+          <Property Name="SUB_MODEL_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="YEAR_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="COUNTRY_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAIN_TYPE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUB_TYPE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="LICENSE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEATS_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="FUEL_TYPE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="GEER_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIZE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="TRUNK_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="RESPONSE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEAT_5_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="ROAD_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAINTANANCE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="RELIABILITY_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="TRADE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="VALUE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECURE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="GAS_COMPATIBLE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="IGNITION_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="HEAT_STAND_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="SMOKERS_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="AVIRUT_SHETAH_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="MULTI_DRIVER_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="PERCEPTION_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="VISUAL_SPACE_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="DRIVER_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="BODY" Type="int" />
+          <Property Name="BODY_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="DORS_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACCESSORY_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="FUEL_CONSUME" Type="int" />
+          <Property Name="FEUL_CONSUME_DESC" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.CarsEx' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CarsEx">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+            <PropertyRef Name="MAIN_LOOKUP_ID" />
+            <PropertyRef Name="LOOKUP_ID" />
+            <PropertyRef Name="LOOKUP_VALUE" />
+          </Key>
+          <Property Name="CAR_ID" Type="int" Nullable="false" />
+          <Property Name="MAIN_LOOKUP_ID" Type="int" Nullable="false" />
+          <Property Name="LOOKUP_ID" Type="int" Nullable="false" />
+          <Property Name="LOOKUP_VALUE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarSubModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANUFACTOR_ID" Type="int" Nullable="false" />
+          <Property Name="MODEL_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRICE" Type="int" />
+          <Property Name="SMALL_IMAGE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BIG_IMAGE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CarSubType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAIN_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="LookupDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAIN_LOOKUP_ID" Type="int" Nullable="false" />
+          <Property Name="VALUE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+          <Property Name="PARENT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="MainLookup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="MENU_REF_ID" Type="int" />
+          <Property Name="MANUAL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="VALUES_MANUAL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ORDER" Type="int" />
+          <Property Name="PARENT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="MandatoryQuestions">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="IS_MANDATORY" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.Menu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="30" />
+          <Property Name="ORDER" Type="int" />
+          <Property Name="PARENT_ID" Type="int" />
+          <Property Name="LINKED_TO" Type="int" />
+          <Property Name="MANUAL" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUMMERY_EDIT" Type="bit" />
+        </EntityType>
+        <EntityType Name="Points">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="POINTS" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'autologia.auto.Questions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="CARS_REF" Type="nvarchar" MaxLength="30" />
+          <Property Name="MULTI_SELECT" Type="bit" />
+          <Property Name="RANGE" Type="bit" />
+        </EntityType>
+        <EntityType Name="QuestionsAnswers">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+            <PropertyRef Name="ANSWER_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="ANSWER_ID" Type="int" Nullable="false" />
+          <Property Name="ORDER" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'autologia.auto.QuestionsTypes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="QuestionsTypes">
+          <Property Name="ID" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="30" />
+          <Property Name="POINTS" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="20" />
+          <Property Name="FIRST_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="LAST_NAME" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="CarModel_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarModel">
+              <PropertyRef Name="MANUFACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'CarMultiAnswer_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="CarMultiAnswer_fk" />-->
+        <Association Name="CarMultiAnswer_fk2">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="CarMultiAnswer" Type="Self.CarMultiAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarMultiAnswer">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarMultiAnswer_fk3">
+          <End Role="Answers" Type="Self.Answers" Multiplicity="0..1" />
+          <End Role="CarMultiAnswer" Type="Self.CarMultiAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarMultiAnswer">
+              <PropertyRef Name="ANSWER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="MANUFACTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk2">
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="MODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk3">
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarSubModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="SUB_MODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarSubModel_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarSubModel">
+              <PropertyRef Name="MANUFACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarSubModel_fk2">
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarSubModel">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LookupDetails_fk">
+          <End Role="MainLookup" Type="Self.MainLookup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LookupDetails" Type="Self.LookupDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLookup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LookupDetails">
+              <PropertyRef Name="MAIN_LOOKUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Points_fk">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Points" Type="Self.Points" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Points">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relationship, but cannot be found.
+        <Association Name="QuestionsAnswers_fk" />-->
+        <Association Name="QuestionsAnswers_fk2">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionsAnswers">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuestionsAnswers_fk3">
+          <End Role="Answers" Type="Self.Answers" Multiplicity="1" />
+          <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionsAnswers">
+              <PropertyRef Name="ANSWER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAddCarsEx" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="keys" Type="varchar" Mode="In" />
+          <Parameter Name="listId" Type="int" Mode="In" />
+          <Parameter Name="CarId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAddMainType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="value" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddManufactur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="LOGO" Type="varchar" Mode="In" />
+          <Parameter Name="LINK" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MANUFACTOR_ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="IMAGE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddMySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="searchData" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spAddSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="searchData" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddSubModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MANUFACTOR_ID" Type="int" Mode="In" />
+          <Parameter Name="MODEL_ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="SMALL_IMAGE" Type="varchar" Mode="In" />
+          <Parameter Name="BIG_IMAGE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spDeleteCar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteLookups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MainLookup" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteMainTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spDeleteManufactor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteManufactures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spDeleteModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ManufactorId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteSubModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteSubModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spForgotPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetAdminUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="userName" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetAllCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spGetCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="manufactor" Type="int" Mode="In" />
+          <Parameter Name="model" Type="int" Mode="In" />
+          <Parameter Name="subModel" Type="int" Mode="In" />
+          <Parameter Name="mainType" Type="int" Mode="In" />
+          <Parameter Name="subType" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetCars_old" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spGetCarsExAsString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spGetLookupDetailItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="mainId" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetlookupDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetLookupItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetLookups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="menuRef" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetMainLookupManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetMainLookupValuesManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetMainTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spGetManufactures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto" />
+        <Function Name="spGetMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetMenus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ParentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ManufactorId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetMySearches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetSubModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ManufactorId" Type="int" Mode="In" />
+          <Parameter Name="ModelId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetSubType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MainId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetSubTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MainId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSaveManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MenuId" Type="int" Mode="In" />
+          <Parameter Name="Manual" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSaveSummeryEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="MenuId" Type="int" Mode="In" />
+          <Parameter Name="SummeryEdit" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spUpdateMainLookupManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="manual" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateMainLookupValuesManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="manual" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateManufactorLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LINK" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateManufactur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="LINK" Type="varchar" Mode="In" />
+          <Parameter Name="IMAGE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdatePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUpdateSubModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="auto">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="SMALL_IMAGE" Type="varchar" Mode="In" />
+          <Parameter Name="BIG_IMAGE" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="autologiaModelStoreContainer">
+          <EntitySet Name="CarMainType" EntityType="Self.CarMainType" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="CarManufactors" EntityType="Self.CarManufactors" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="CarModel" EntityType="Self.CarModel" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="CarSubModel" EntityType="Self.CarSubModel" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="CarSubType" EntityType="Self.CarSubType" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="LookupDetails" EntityType="Self.LookupDetails" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="MainLookup" EntityType="Self.MainLookup" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="MandatoryQuestions" EntityType="Self.MandatoryQuestions" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="Points" EntityType="Self.Points" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="QuestionsAnswers" EntityType="Self.QuestionsAnswers" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="auto" store:Type="Tables" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [AdminUsers].[ID] AS [ID], 
+    [AdminUsers].[UserName] AS [UserName], 
+    [AdminUsers].[Password] AS [Password]
+    FROM [auto].[AdminUsers] AS [AdminUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Answers" EntityType="Self.Answers" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [Answers].[ID] AS [ID], 
+    [Answers].[NAME] AS [NAME], 
+    [Answers].[SELECTED] AS [SELECTED]
+    FROM [auto].[Answers] AS [Answers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CarMultiAnswer" EntityType="Self.CarMultiAnswer" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [CarMultiAnswer].[CAR_ID] AS [CAR_ID], 
+    [CarMultiAnswer].[QUESTION_ID] AS [QUESTION_ID], 
+    [CarMultiAnswer].[ANSWER_ID] AS [ANSWER_ID]
+    FROM [auto].[CarMultiAnswer] AS [CarMultiAnswer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CarsEx" EntityType="Self.CarsEx" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [CarsEx].[CAR_ID] AS [CAR_ID], 
+    [CarsEx].[MAIN_LOOKUP_ID] AS [MAIN_LOOKUP_ID], 
+    [CarsEx].[LOOKUP_ID] AS [LOOKUP_ID], 
+    [CarsEx].[LOOKUP_VALUE] AS [LOOKUP_VALUE]
+    FROM [auto].[CarsEx] AS [CarsEx]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Menu" EntityType="Self.Menu" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [Menu].[ID] AS [ID], 
+    [Menu].[DESCRIPTION] AS [DESCRIPTION], 
+    [Menu].[ORDER] AS [ORDER], 
+    [Menu].[PARENT_ID] AS [PARENT_ID], 
+    [Menu].[LINKED_TO] AS [LINKED_TO], 
+    [Menu].[MANUAL] AS [MANUAL], 
+    [Menu].[SUMMERY_EDIT] AS [SUMMERY_EDIT]
+    FROM [auto].[Menu] AS [Menu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Questions" EntityType="Self.Questions" store:Type="Tables" store:Schema="auto">
+            <DefiningQuery>SELECT 
+    [Questions].[ID] AS [ID], 
+    [Questions].[NAME] AS [NAME], 
+    [Questions].[CARS_REF] AS [CARS_REF], 
+    [Questions].[MULTI_SELECT] AS [MULTI_SELECT], 
+    [Questions].[RANGE] AS [RANGE]
+    FROM [auto].[Questions] AS [Questions]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="CarModel_fk" Association="Self.CarModel_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="CarModel" EntitySet="CarModel" />
+          </AssociationSet>
+          <AssociationSet Name="CarMultiAnswer_fk2" Association="Self.CarMultiAnswer_fk2">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="CarMultiAnswer" EntitySet="CarMultiAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="CarMultiAnswer_fk3" Association="Self.CarMultiAnswer_fk3">
+            <End Role="Answers" EntitySet="Answers" />
+            <End Role="CarMultiAnswer" EntitySet="CarMultiAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk" Association="Self.Cars_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk2" Association="Self.Cars_fk2">
+            <End Role="CarModel" EntitySet="CarModel" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk3" Association="Self.Cars_fk3">
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="CarSubModel_fk" Association="Self.CarSubModel_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+          </AssociationSet>
+          <AssociationSet Name="CarSubModel_fk2" Association="Self.CarSubModel_fk2">
+            <End Role="CarModel" EntitySet="CarModel" />
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+          </AssociationSet>
+          <AssociationSet Name="LookupDetails_fk" Association="Self.LookupDetails_fk">
+            <End Role="MainLookup" EntitySet="MainLookup" />
+            <End Role="LookupDetails" EntitySet="LookupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="Points_fk" Association="Self.Points_fk">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Points" EntitySet="Points" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsAnswers_fk2" Association="Self.QuestionsAnswers_fk2">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsAnswers_fk3" Association="Self.QuestionsAnswers_fk3">
+            <End Role="Answers" EntitySet="Answers" />
+            <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="autologiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarMainType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CarManufactors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LINK" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarModel" Relationship="Self.CarModel_fk" FromRole="CarManufactors" ToRole="CarModel" />
+          <NavigationProperty Name="Cars" Relationship="Self.Cars_fk" FromRole="CarManufactors" ToRole="Cars" />
+          <NavigationProperty Name="CarSubModel" Relationship="Self.CarSubModel_fk" FromRole="CarManufactors" ToRole="CarSubModel" />
+        </EntityType>
+        <EntityType Name="CarModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANUFACTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarManufactors" Relationship="Self.CarModel_fk" FromRole="CarModel" ToRole="CarManufactors" />
+          <NavigationProperty Name="Cars" Relationship="Self.Cars_fk2" FromRole="CarModel" ToRole="Cars" />
+          <NavigationProperty Name="CarSubModel" Relationship="Self.CarSubModel_fk2" FromRole="CarModel" ToRole="CarSubModel" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="MANUFACTOR" />
+            <PropertyRef Name="MODEL" />
+            <PropertyRef Name="SUB_MODEL" />
+            <PropertyRef Name="YEAR" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANUFACTOR" Type="Int32" Nullable="false" />
+          <Property Name="MODEL" Type="Int32" Nullable="false" />
+          <Property Name="SUB_MODEL" Type="Int32" Nullable="false" />
+          <Property Name="YEAR" Type="Int32" Nullable="false" />
+          <Property Name="COUNTRY" Type="Int32" />
+          <Property Name="MAIN_TYPE" Type="Int32" />
+          <Property Name="SUB_TYPE" Type="Int32" />
+          <Property Name="LICENSE" Type="Int32" />
+          <Property Name="SEATS" Type="Int32" />
+          <Property Name="DORS" Type="Int32" />
+          <Property Name="FUEL_TYPE" Type="Int32" />
+          <Property Name="GEER" Type="Int32" Nullable="false" />
+          <Property Name="SIZE" Type="Int32" />
+          <Property Name="TRUNK" Type="Int32" />
+          <Property Name="ACCESSORY" Type="Int32" />
+          <Property Name="RESPONSE" Type="Int32" />
+          <Property Name="SEAT_5" Type="Int32" />
+          <Property Name="VISUAL_SPACE" Type="Int32" />
+          <Property Name="ROAD" Type="Int32" />
+          <Property Name="MAINTANANCE" Type="Int32" />
+          <Property Name="RELIABILITY" Type="Int32" />
+          <Property Name="TRADE" Type="Int32" />
+          <Property Name="VALUE" Type="Int32" />
+          <Property Name="SECURE" Type="Int32" />
+          <Property Name="GAS_COMPATIBLE" Type="Int32" />
+          <Property Name="IGNITION" Type="Int32" />
+          <Property Name="HEAT_STAND" Type="Int32" />
+          <Property Name="SMOKERS" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MULTI_DRIVER" Type="Int32" />
+          <Property Name="PRICE" Type="Int32" />
+          <Property Name="OPPINION_FOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OPPINION_AGAINST" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LINKS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AVIRUT_SHETAH" Type="Int32" />
+          <Property Name="UNIQUE_IDENTIFIER" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SUB_MODEL_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YEAR_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAIN_TYPE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUB_TYPE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LICENSE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEATS_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUEL_TYPE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GEER_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SIZE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TRUNK_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEAT_5_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ROAD_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAINTANANCE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RELIABILITY_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TRADE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VALUE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECURE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GAS_COMPATIBLE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IGNITION_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HEAT_STAND_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SMOKERS_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AVIRUT_SHETAH_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MULTI_DRIVER_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PERCEPTION_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VISUAL_SPACE_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DRIVER_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BODY" Type="Int32" />
+          <Property Name="BODY_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DORS_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACCESSORY_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FUEL_CONSUME" Type="Int32" />
+          <Property Name="FEUL_CONSUME_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarManufactors" Relationship="Self.Cars_fk" FromRole="Cars" ToRole="CarManufactors" />
+          <NavigationProperty Name="CarModel" Relationship="Self.Cars_fk2" FromRole="Cars" ToRole="CarModel" />
+          <NavigationProperty Name="CarSubModel" Relationship="Self.Cars_fk3" FromRole="Cars" ToRole="CarSubModel" />
+        </EntityType>
+        <EntityType Name="CarSubModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANUFACTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRICE" Type="Int32" />
+          <Property Name="SMALL_IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BIG_IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarManufactors" Relationship="Self.CarSubModel_fk" FromRole="CarSubModel" ToRole="CarManufactors" />
+          <NavigationProperty Name="CarModel" Relationship="Self.CarSubModel_fk2" FromRole="CarSubModel" ToRole="CarModel" />
+          <NavigationProperty Name="Cars" Relationship="Self.Cars_fk3" FromRole="CarSubModel" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="CarSubType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAIN_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LookupDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAIN_LOOKUP_ID" Type="Int32" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PARENT_ID" Type="Int32" />
+          <NavigationProperty Name="MainLookup" Relationship="Self.LookupDetails_fk" FromRole="LookupDetails" ToRole="MainLookup" />
+        </EntityType>
+        <EntityType Name="MainLookup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="MENU_REF_ID" Type="Int32" />
+          <Property Name="MANUAL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="VALUES_MANUAL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ORDER" Type="Int32" />
+          <Property Name="PARENT_ID" Type="Int32" />
+          <NavigationProperty Name="LookupDetails" Relationship="Self.LookupDetails_fk" FromRole="MainLookup" ToRole="LookupDetails" />
+        </EntityType>
+        <EntityType Name="MandatoryQuestions">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="IS_MANDATORY" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Points">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="POINTS1" Type="Int32" />
+          <NavigationProperty Name="Questions" Relationship="Self.Points_fk" FromRole="Points" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="QuestionsAnswers">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+            <PropertyRef Name="ANSWER_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="ANSWER_ID" Type="Int32" Nullable="false" />
+          <Property Name="ORDER" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="Self.QuestionsAnswers_fk2" FromRole="QuestionsAnswers" ToRole="Questions" />
+          <NavigationProperty Name="Answers" Relationship="Self.QuestionsAnswers_fk3" FromRole="QuestionsAnswers" ToRole="Answers" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SELECTED" Type="Boolean" />
+          <NavigationProperty Name="QuestionsAnswers" Relationship="Self.QuestionsAnswers_fk3" FromRole="Answers" ToRole="QuestionsAnswers" />
+          <NavigationProperty Name="CarMultiAnswer" Relationship="Self.CarMultiAnswer_fk3" FromRole="Answers" ToRole="CarMultiAnswer" />
+        </EntityType>
+        <EntityType Name="CarMultiAnswer">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="ANSWER_ID" Type="Int32" />
+          <NavigationProperty Name="Answers" Relationship="Self.CarMultiAnswer_fk3" FromRole="CarMultiAnswer" ToRole="Answers" />
+          <NavigationProperty Name="Questions" Relationship="Self.CarMultiAnswer_fk2" FromRole="CarMultiAnswer" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="CarsEx">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+            <PropertyRef Name="MAIN_LOOKUP_ID" />
+            <PropertyRef Name="LOOKUP_ID" />
+            <PropertyRef Name="LOOKUP_VALUE" />
+          </Key>
+          <Property Name="CAR_ID" Type="Int32" Nullable="false" />
+          <Property Name="MAIN_LOOKUP_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOOKUP_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOOKUP_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ORDER" Type="Int32" />
+          <Property Name="PARENT_ID" Type="Int32" />
+          <Property Name="LINKED_TO" Type="Int32" />
+          <Property Name="MANUAL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SUMMERY_EDIT" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CARS_REF" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MULTI_SELECT" Type="Boolean" />
+          <Property Name="RANGE" Type="Boolean" />
+          <NavigationProperty Name="Points" Relationship="Self.Points_fk" FromRole="Questions" ToRole="Points" />
+          <NavigationProperty Name="QuestionsAnswers" Relationship="Self.QuestionsAnswers_fk2" FromRole="Questions" ToRole="QuestionsAnswers" />
+          <NavigationProperty Name="CarMultiAnswer" Relationship="Self.CarMultiAnswer_fk2" FromRole="Questions" ToRole="CarMultiAnswer" />
+        </EntityType>
+        <Association Name="CarModel_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarModel">
+              <PropertyRef Name="MANUFACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="MANUFACTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarSubModel_fk">
+          <End Role="CarManufactors" Type="Self.CarManufactors" Multiplicity="1" />
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarManufactors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarSubModel">
+              <PropertyRef Name="MANUFACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk2">
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="MODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarSubModel_fk2">
+          <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarSubModel">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cars_fk3">
+          <End Role="CarSubModel" Type="Self.CarSubModel" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarSubModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="SUB_MODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LookupDetails_fk">
+          <End Role="MainLookup" Type="Self.MainLookup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LookupDetails" Type="Self.LookupDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLookup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LookupDetails">
+              <PropertyRef Name="MAIN_LOOKUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Points_fk">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Points" Type="Self.Points" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Points">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuestionsAnswers_fk2">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionsAnswers">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuestionsAnswers_fk3">
+          <End Role="Answers" Type="Self.Answers" Multiplicity="1" />
+          <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionsAnswers">
+              <PropertyRef Name="ANSWER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarMultiAnswer_fk3">
+          <End Role="Answers" Type="Self.Answers" Multiplicity="0..1" />
+          <End Role="CarMultiAnswer" Type="Self.CarMultiAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarMultiAnswer">
+              <PropertyRef Name="ANSWER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarMultiAnswer_fk2">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="CarMultiAnswer" Type="Self.CarMultiAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CarMultiAnswer">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="autologiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarMainType" EntityType="Self.CarMainType" />
+          <EntitySet Name="CarManufactors" EntityType="Self.CarManufactors" />
+          <EntitySet Name="CarModel" EntityType="Self.CarModel" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" />
+          <EntitySet Name="CarSubModel" EntityType="Self.CarSubModel" />
+          <EntitySet Name="CarSubType" EntityType="Self.CarSubType" />
+          <EntitySet Name="LookupDetails" EntityType="Self.LookupDetails" />
+          <EntitySet Name="MainLookup" EntityType="Self.MainLookup" />
+          <EntitySet Name="MandatoryQuestions" EntityType="Self.MandatoryQuestions" />
+          <EntitySet Name="Points" EntityType="Self.Points" />
+          <EntitySet Name="QuestionsAnswers" EntityType="Self.QuestionsAnswers" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" />
+          <EntitySet Name="Answers" EntityType="Self.Answers" />
+          <EntitySet Name="CarMultiAnswer" EntityType="Self.CarMultiAnswer" />
+          <EntitySet Name="CarsEx" EntityType="Self.CarsEx" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" />
+          <AssociationSet Name="CarModel_fk" Association="Self.CarModel_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="CarModel" EntitySet="CarModel" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk" Association="Self.Cars_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="CarSubModel_fk" Association="Self.CarSubModel_fk">
+            <End Role="CarManufactors" EntitySet="CarManufactors" />
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk2" Association="Self.Cars_fk2">
+            <End Role="CarModel" EntitySet="CarModel" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="CarSubModel_fk2" Association="Self.CarSubModel_fk2">
+            <End Role="CarModel" EntitySet="CarModel" />
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+          </AssociationSet>
+          <AssociationSet Name="Cars_fk3" Association="Self.Cars_fk3">
+            <End Role="CarSubModel" EntitySet="CarSubModel" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="LookupDetails_fk" Association="Self.LookupDetails_fk">
+            <End Role="MainLookup" EntitySet="MainLookup" />
+            <End Role="LookupDetails" EntitySet="LookupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="Points_fk" Association="Self.Points_fk">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Points" EntitySet="Points" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsAnswers_fk2" Association="Self.QuestionsAnswers_fk2">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsAnswers_fk3" Association="Self.QuestionsAnswers_fk3">
+            <End Role="Answers" EntitySet="Answers" />
+            <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="CarMultiAnswer_fk3" Association="Self.CarMultiAnswer_fk3">
+            <End Role="Answers" EntitySet="Answers" />
+            <End Role="CarMultiAnswer" EntitySet="CarMultiAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="CarMultiAnswer_fk2" Association="Self.CarMultiAnswer_fk2">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="CarMultiAnswer" EntitySet="CarMultiAnswer" />
+          </AssociationSet>
+          <FunctionImport Name="spAddCarsEx">
+            <Parameter Name="keys" Mode="In" Type="String" />
+            <Parameter Name="listId" Mode="In" Type="Int32" />
+            <Parameter Name="CarId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddMainType">
+            <Parameter Name="value" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddManufactur">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="LOGO" Mode="In" Type="String" />
+            <Parameter Name="LINK" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddModel">
+            <Parameter Name="MANUFACTOR_ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="IMAGE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddMySearch">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="searchData" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddSearch">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="searchData" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddSubModel">
+            <Parameter Name="MANUFACTOR_ID" Mode="In" Type="Int32" />
+            <Parameter Name="MODEL_ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SMALL_IMAGE" Mode="In" Type="String" />
+            <Parameter Name="BIG_IMAGE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUser" ReturnType="Collection(Int32)">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteCar">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteLookups">
+            <Parameter Name="MainLookup" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteMainTypes" />
+          <FunctionImport Name="spDeleteManufactor">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteManufactures" />
+          <FunctionImport Name="spDeleteModel">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteModels">
+            <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteSearch">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteSubModel">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteSubModels">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spForgotPassword" ReturnType="Collection(String)">
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAdminUser" ReturnType="Collection(autologiaModel.spGetAdminUser_Result)">
+            <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAllCars" ReturnType="Collection(autologiaModel.spGetAllCars_Result)" />
+          <FunctionImport Name="spGetCars" ReturnType="Collection(autologiaModel.spGetCars_Result)">
+            <Parameter Name="manufactor" Mode="In" Type="Int32" />
+            <Parameter Name="model" Mode="In" Type="Int32" />
+            <Parameter Name="subModel" Mode="In" Type="Int32" />
+            <Parameter Name="mainType" Mode="In" Type="Int32" />
+            <Parameter Name="subType" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetCars_old" ReturnType="Collection(autologiaModel.spGetCars_old_Result)" />
+          <FunctionImport Name="spGetCarsExAsString" />
+          <FunctionImport Name="spGetLookupDetailItem" ReturnType="Collection(autologiaModel.spGetLookupDetailItem_Result)">
+            <Parameter Name="mainId" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetlookupDetails" ReturnType="Collection(autologiaModel.spGetlookupDetails_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetLookupItem" ReturnType="Collection(autologiaModel.spGetLookupItem_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetLookups" ReturnType="Collection(autologiaModel.spGetLookups_Result)">
+            <Parameter Name="menuRef" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMainLookupManual" ReturnType="Collection(String)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMainLookupValuesManual" ReturnType="Collection(String)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMainTypes" ReturnType="Collection(autologiaModel.spGetMainTypes_Result)" />
+          <FunctionImport Name="spGetManufactures" ReturnType="Collection(autologiaModel.spGetManufactures_Result)" />
+          <FunctionImport Name="spGetMenu" ReturnType="Collection(autologiaModel.spGetMenu_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMenus" ReturnType="Collection(autologiaModel.spGetMenus_Result)">
+            <Parameter Name="ParentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetModels" ReturnType="Collection(autologiaModel.spGetModels_Result)">
+            <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMySearches">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSubModels" ReturnType="Collection(autologiaModel.spGetSubModels_Result)">
+            <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
+            <Parameter Name="ModelId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSubType" ReturnType="Collection(autologiaModel.spGetSubType_Result)">
+            <Parameter Name="MainId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSubTypes" ReturnType="Collection(autologiaModel.spGetSubTypes_Result)">
+            <Parameter Name="MainId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUser" ReturnType="Collection(autologiaModel.spGetUser_Result)">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSaveManual">
+            <Parameter Name="MenuId" Mode="In" Type="Int32" />
+            <Parameter Name="Manual" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSaveSummeryEdit">
+            <Parameter Name="MenuId" Mode="In" Type="Int32" />
+            <Parameter Name="SummeryEdit" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateMainLookupManual">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="manual" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateMainLookupValuesManual">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="manual" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateManufactorLink">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LINK" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateManufactur">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="LINK" Mode="In" Type="String" />
+            <Parameter Name="IMAGE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdatePrice">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateSubModel">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SMALL_IMAGE" Mode="In" Type="String" />
+            <Parameter Name="BIG_IMAGE" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spGetAdminUser_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetAllCars_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MANUFACTOR" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MAIN_TYPE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SUB_TYPE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FUEL_TYPE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SEATS" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MULTI_DRIVER" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SIZE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TRUNK" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MAINTANANCE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FUEL_CONSUME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SECURE" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SECURE1" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MODEL" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SUB_MODEL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="YEAR" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetCars_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MANUFACTOR_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MODEL_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SUB_MODEL_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MAIN_TYPE_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SUB_TYPE_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SMALL_IMAGE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetCars_old_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MANUFACTOR" Nullable="false" />
+          <Property Type="Int32" Name="MODEL" Nullable="false" />
+          <Property Type="Int32" Name="SUB_MODEL" Nullable="false" />
+          <Property Type="Int32" Name="YEAR" Nullable="false" />
+          <Property Type="Int32" Name="COUNTRY" Nullable="true" />
+          <Property Type="Int32" Name="MAIN_TYPE" Nullable="true" />
+          <Property Type="Int32" Name="SUB_TYPE" Nullable="true" />
+          <Property Type="Int32" Name="LICENSE" Nullable="true" />
+          <Property Type="Int32" Name="SEATS" Nullable="true" />
+          <Property Type="Int32" Name="DORS" Nullable="true" />
+          <Property Type="Int32" Name="FUEL_TYPE" Nullable="true" />
+          <Property Type="Int32" Name="GEER" Nullable="false" />
+          <Property Type="Int32" Name="SIZE" Nullable="true" />
+          <Property Type="Int32" Name="TRUNK" Nullable="true" />
+          <Property Type="Int32" Name="ACCESSORY" Nullable="true" />
+          <Property Type="Int32" Name="RESPONSE" Nullable="true" />
+          <Property Type="Int32" Name="SEAT_5" Nullable="true" />
+          <Property Type="Int32" Name="VISUAL_SPACE" Nullable="true" />
+          <Property Type="Int32" Name="ROAD" Nullable="true" />
+          <Property Type="Int32" Name="MAINTANANCE" Nullable="true" />
+          <Property Type="Int32" Name="RELIABILITY" Nullable="true" />
+          <Property Type="Int32" Name="TRADE" Nullable="true" />
+          <Property Type="Int32" Name="VALUE" Nullable="true" />
+          <Property Type="Int32" Name="SECURE" Nullable="true" />
+          <Property Type="Int32" Name="GAS_COMPATIBLE" Nullable="true" />
+          <Property Type="Int32" Name="IGNITION" Nullable="true" />
+          <Property Type="Int32" Name="HEAT_STAND" Nullable="true" />
+          <Property Type="Int32" Name="SMOKERS" Nullable="true" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="MULTI_DRIVER" Nullable="true" />
+          <Property Type="Int32" Name="PRICE" Nullable="true" />
+          <Property Type="String" Name="OPPINION_FOR" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="OPPINION_AGAINST" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LINKS" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="AVIRUT_SHETAH" Nullable="true" />
+          <Property Type="String" Name="UNIQUE_IDENTIFIER" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SUB_MODEL_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="YEAR_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COUNTRY_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MAIN_TYPE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SUB_TYPE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LICENSE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEATS_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUEL_TYPE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GEER_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SIZE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TRUNK_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RESPONSE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEAT_5_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ROAD_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MAINTANANCE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RELIABILITY_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TRADE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VALUE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SECURE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GAS_COMPATIBLE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="IGNITION_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="HEAT_STAND_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SMOKERS_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AVIRUT_SHETAH_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MULTI_DRIVER_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PERCEPTION_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="VISUAL_SPACE_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DRIVER_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="BODY" Nullable="true" />
+          <Property Type="String" Name="BODY_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DORS_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACCESSORY_DESC" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="FUEL_CONSUME" Nullable="true" />
+          <Property Type="String" Name="FEUL_CONSUME_DESC" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetLookupDetailItem_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MAIN_LOOKUP_ID" Nullable="false" />
+          <Property Type="String" Name="VALUE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetlookupDetails_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MAIN_LOOKUP_ID" Nullable="false" />
+          <Property Type="String" Name="VALUE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetLookupItem_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ACTIVE" Nullable="true" />
+          <Property Type="Int32" Name="MENU_REF_ID" Nullable="true" />
+          <Property Type="String" Name="MANUAL" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="VALUES_MANUAL" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="ORDER" Nullable="true" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetLookups_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ACTIVE" Nullable="true" />
+          <Property Type="Int32" Name="MENU_REF_ID" Nullable="true" />
+          <Property Type="String" Name="MANUAL" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="VALUES_MANUAL" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="ORDER" Nullable="true" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetMainTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetManufactures_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="LOGO" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="LINK" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spGetMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="ORDER" Nullable="true" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+          <Property Type="Int32" Name="LINKED_TO" Nullable="true" />
+          <Property Type="String" Name="MANUAL" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="SUMMERY_EDIT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetMenus_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="ORDER" Nullable="true" />
+          <Property Type="Int32" Name="PARENT_ID" Nullable="true" />
+          <Property Type="Int32" Name="LINKED_TO" Nullable="true" />
+          <Property Type="String" Name="MANUAL" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="SUMMERY_EDIT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetModels_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MANUFACTOR_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="IMAGE" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spGetSubModels_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MANUFACTOR_ID" Nullable="false" />
+          <Property Type="Int32" Name="MODEL_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PRICE" Nullable="true" />
+          <Property Type="String" Name="SMALL_IMAGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BIG_IMAGE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetSubType_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MAIN_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetSubTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MAIN_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetUser_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FIRST_NAME" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="LAST_NAME" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="autologiaModelStoreContainer" CdmEntityContainer="autologiaEntities">
+          <EntitySetMapping Name="CarMainType">
+            <EntityTypeMapping TypeName="autologiaModel.CarMainType">
+              <MappingFragment StoreEntitySet="CarMainType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarManufactors">
+            <EntityTypeMapping TypeName="autologiaModel.CarManufactors">
+              <MappingFragment StoreEntitySet="CarManufactors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarModel">
+            <EntityTypeMapping TypeName="autologiaModel.CarModel">
+              <MappingFragment StoreEntitySet="CarModel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR_ID" ColumnName="MANUFACTOR_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="autologiaModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR" ColumnName="MANUFACTOR" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SUB_MODEL" ColumnName="SUB_MODEL" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="MAIN_TYPE" ColumnName="MAIN_TYPE" />
+                <ScalarProperty Name="SUB_TYPE" ColumnName="SUB_TYPE" />
+                <ScalarProperty Name="LICENSE" ColumnName="LICENSE" />
+                <ScalarProperty Name="SEATS" ColumnName="SEATS" />
+                <ScalarProperty Name="DORS" ColumnName="DORS" />
+                <ScalarProperty Name="FUEL_TYPE" ColumnName="FUEL_TYPE" />
+                <ScalarProperty Name="GEER" ColumnName="GEER" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="TRUNK" ColumnName="TRUNK" />
+                <ScalarProperty Name="ACCESSORY" ColumnName="ACCESSORY" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="SEAT_5" ColumnName="SEAT_5" />
+                <ScalarProperty Name="VISUAL_SPACE" ColumnName="VISUAL_SPACE" />
+                <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+                <ScalarProperty Name="MAINTANANCE" ColumnName="MAINTANANCE" />
+                <ScalarProperty Name="RELIABILITY" ColumnName="RELIABILITY" />
+                <ScalarProperty Name="TRADE" ColumnName="TRADE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="SECURE" ColumnName="SECURE" />
+                <ScalarProperty Name="GAS_COMPATIBLE" ColumnName="GAS_COMPATIBLE" />
+                <ScalarProperty Name="IGNITION" ColumnName="IGNITION" />
+                <ScalarProperty Name="HEAT_STAND" ColumnName="HEAT_STAND" />
+                <ScalarProperty Name="SMOKERS" ColumnName="SMOKERS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MULTI_DRIVER" ColumnName="MULTI_DRIVER" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="OPPINION_FOR" ColumnName="OPPINION_FOR" />
+                <ScalarProperty Name="OPPINION_AGAINST" ColumnName="OPPINION_AGAINST" />
+                <ScalarProperty Name="LINKS" ColumnName="LINKS" />
+                <ScalarProperty Name="AVIRUT_SHETAH" ColumnName="AVIRUT_SHETAH" />
+                <ScalarProperty Name="UNIQUE_IDENTIFIER" ColumnName="UNIQUE_IDENTIFIER" />
+                <ScalarProperty Name="SUB_MODEL_DESC" ColumnName="SUB_MODEL_DESC" />
+                <ScalarProperty Name="YEAR_DESC" ColumnName="YEAR_DESC" />
+                <ScalarProperty Name="COUNTRY_DESC" ColumnName="COUNTRY_DESC" />
+                <ScalarProperty Name="MAIN_TYPE_DESC" ColumnName="MAIN_TYPE_DESC" />
+                <ScalarProperty Name="SUB_TYPE_DESC" ColumnName="SUB_TYPE_DESC" />
+                <ScalarProperty Name="LICENSE_DESC" ColumnName="LICENSE_DESC" />
+                <ScalarProperty Name="SEATS_DESC" ColumnName="SEATS_DESC" />
+                <ScalarProperty Name="FUEL_TYPE_DESC" ColumnName="FUEL_TYPE_DESC" />
+                <ScalarProperty Name="GEER_DESC" ColumnName="GEER_DESC" />
+                <ScalarProperty Name="SIZE_DESC" ColumnName="SIZE_DESC" />
+                <ScalarProperty Name="TRUNK_DESC" ColumnName="TRUNK_DESC" />
+                <ScalarProperty Name="RESPONSE_DESC" ColumnName="RESPONSE_DESC" />
+                <ScalarProperty Name="SEAT_5_DESC" ColumnName="SEAT_5_DESC" />
+                <ScalarProperty Name="ROAD_DESC" ColumnName="ROAD_DESC" />
+                <ScalarProperty Name="MAINTANANCE_DESC" ColumnName="MAINTANANCE_DESC" />
+                <ScalarProperty Name="RELIABILITY_DESC" ColumnName="RELIABILITY_DESC" />
+                <ScalarProperty Name="TRADE_DESC" ColumnName="TRADE_DESC" />
+                <ScalarProperty Name="VALUE_DESC" ColumnName="VALUE_DESC" />
+                <ScalarProperty Name="SECURE_DESC" ColumnName="SECURE_DESC" />
+                <ScalarProperty Name="GAS_COMPATIBLE_DESC" ColumnName="GAS_COMPATIBLE_DESC" />
+                <ScalarProperty Name="IGNITION_DESC" ColumnName="IGNITION_DESC" />
+                <ScalarProperty Name="HEAT_STAND_DESC" ColumnName="HEAT_STAND_DESC" />
+                <ScalarProperty Name="SMOKERS_DESC" ColumnName="SMOKERS_DESC" />
+                <ScalarProperty Name="AVIRUT_SHETAH_DESC" ColumnName="AVIRUT_SHETAH_DESC" />
+                <ScalarProperty Name="MULTI_DRIVER_DESC" ColumnName="MULTI_DRIVER_DESC" />
+                <ScalarProperty Name="PERCEPTION_DESC" ColumnName="PERCEPTION_DESC" />
+                <ScalarProperty Name="VISUAL_SPACE_DESC" ColumnName="VISUAL_SPACE_DESC" />
+                <ScalarProperty Name="DRIVER_DESC" ColumnName="DRIVER_DESC" />
+                <ScalarProperty Name="BODY" ColumnName="BODY" />
+                <ScalarProperty Name="BODY_DESC" ColumnName="BODY_DESC" />
+                <ScalarProperty Name="DORS_DESC" ColumnName="DORS_DESC" />
+                <ScalarProperty Name="ACCESSORY_DESC" ColumnName="ACCESSORY_DESC" />
+                <ScalarProperty Name="FUEL_CONSUME" ColumnName="FUEL_CONSUME" />
+                <ScalarProperty Name="FEUL_CONSUME_DESC" ColumnName="FEUL_CONSUME_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarSubModel">
+            <EntityTypeMapping TypeName="autologiaModel.CarSubModel">
+              <MappingFragment StoreEntitySet="CarSubModel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR_ID" ColumnName="MANUFACTOR_ID" />
+                <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="SMALL_IMAGE" ColumnName="SMALL_IMAGE" />
+                <ScalarProperty Name="BIG_IMAGE" ColumnName="BIG_IMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarSubType">
+            <EntityTypeMapping TypeName="autologiaModel.CarSubType">
+              <MappingFragment StoreEntitySet="CarSubType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MAIN_ID" ColumnName="MAIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupDetails">
+            <EntityTypeMapping TypeName="autologiaModel.LookupDetails">
+              <MappingFragment StoreEntitySet="LookupDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAIN_LOOKUP_ID" ColumnName="MAIN_LOOKUP_ID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainLookup">
+            <EntityTypeMapping TypeName="autologiaModel.MainLookup">
+              <MappingFragment StoreEntitySet="MainLookup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="MENU_REF_ID" ColumnName="MENU_REF_ID" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="VALUES_MANUAL" ColumnName="VALUES_MANUAL" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MandatoryQuestions">
+            <EntityTypeMapping TypeName="autologiaModel.MandatoryQuestions">
+              <MappingFragment StoreEntitySet="MandatoryQuestions">
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="IS_MANDATORY" ColumnName="IS_MANDATORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Points">
+            <EntityTypeMapping TypeName="autologiaModel.Points">
+              <MappingFragment StoreEntitySet="Points">
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="POINTS1" ColumnName="POINTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionsAnswers">
+            <EntityTypeMapping TypeName="autologiaModel.QuestionsAnswers">
+              <MappingFragment StoreEntitySet="QuestionsAnswers">
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="ANSWER_ID" ColumnName="ANSWER_ID" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="autologiaModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="autologiaModel.AdminUsers">
+              <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="autologiaModel.Answers">
+              <MappingFragment StoreEntitySet="Answers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SELECTED" ColumnName="SELECTED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarMultiAnswer">
+            <EntityTypeMapping TypeName="autologiaModel.CarMultiAnswer">
+              <MappingFragment StoreEntitySet="CarMultiAnswer">
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="ANSWER_ID" ColumnName="ANSWER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarsEx">
+            <EntityTypeMapping TypeName="autologiaModel.CarsEx">
+              <MappingFragment StoreEntitySet="CarsEx">
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+                <ScalarProperty Name="MAIN_LOOKUP_ID" ColumnName="MAIN_LOOKUP_ID" />
+                <ScalarProperty Name="LOOKUP_ID" ColumnName="LOOKUP_ID" />
+                <ScalarProperty Name="LOOKUP_VALUE" ColumnName="LOOKUP_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="autologiaModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="LINKED_TO" ColumnName="LINKED_TO" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="SUMMERY_EDIT" ColumnName="SUMMERY_EDIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="autologiaModel.Questions">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CARS_REF" ColumnName="CARS_REF" />
+                <ScalarProperty Name="MULTI_SELECT" ColumnName="MULTI_SELECT" />
+                <ScalarProperty Name="RANGE" ColumnName="RANGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAddCarsEx" FunctionName="autologiaModel.Store.spAddCarsEx" />
+          <FunctionImportMapping FunctionImportName="spAddMainType" FunctionName="autologiaModel.Store.spAddMainType" />
+          <FunctionImportMapping FunctionImportName="spAddManufactur" FunctionName="autologiaModel.Store.spAddManufactur" />
+          <FunctionImportMapping FunctionImportName="spAddModel" FunctionName="autologiaModel.Store.spAddModel" />
+          <FunctionImportMapping FunctionImportName="spAddMySearch" FunctionName="autologiaModel.Store.spAddMySearch" />
+          <FunctionImportMapping FunctionImportName="spAddSearch" FunctionName="autologiaModel.Store.spAddSearch" />
+          <FunctionImportMapping FunctionImportName="spAddSubModel" FunctionName="autologiaModel.Store.spAddSubModel" />
+          <FunctionImportMapping FunctionImportName="spAddUser" FunctionName="autologiaModel.Store.spAddUser" />
+          <FunctionImportMapping FunctionImportName="spDeleteCar" FunctionName="autologiaModel.Store.spDeleteCar" />
+          <FunctionImportMapping FunctionImportName="spDeleteLookups" FunctionName="autologiaModel.Store.spDeleteLookups" />
+          <FunctionImportMapping FunctionImportName="spDeleteMainTypes" FunctionName="autologiaModel.Store.spDeleteMainTypes" />
+          <FunctionImportMapping FunctionImportName="spDeleteManufactor" FunctionName="autologiaModel.Store.spDeleteManufactor" />
+          <FunctionImportMapping FunctionImportName="spDeleteManufactures" FunctionName="autologiaModel.Store.spDeleteManufactures" />
+          <FunctionImportMapping FunctionImportName="spDeleteModel" FunctionName="autologiaModel.Store.spDeleteModel" />
+          <FunctionImportMapping FunctionImportName="spDeleteModels" FunctionName="autologiaModel.Store.spDeleteModels" />
+          <FunctionImportMapping FunctionImportName="spDeleteSearch" FunctionName="autologiaModel.Store.spDeleteSearch" />
+          <FunctionImportMapping FunctionImportName="spDeleteSubModel" FunctionName="autologiaModel.Store.spDeleteSubModel" />
+          <FunctionImportMapping FunctionImportName="spDeleteSubModels" FunctionName="autologiaModel.Store.spDeleteSubModels" />
+          <FunctionImportMapping FunctionImportName="spForgotPassword" FunctionName="autologiaModel.Store.spForgotPassword" />
+          <FunctionImportMapping FunctionImportName="spGetAdminUser" FunctionName="autologiaModel.Store.spGetAdminUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetAdminUser_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllCars" FunctionName="autologiaModel.Store.spGetAllCars">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetAllCars_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR" ColumnName="MANUFACTOR" />
+                <ScalarProperty Name="MAIN_TYPE" ColumnName="MAIN_TYPE" />
+                <ScalarProperty Name="SUB_TYPE" ColumnName="SUB_TYPE" />
+                <ScalarProperty Name="FUEL_TYPE" ColumnName="FUEL_TYPE" />
+                <ScalarProperty Name="SEATS" ColumnName="SEATS" />
+                <ScalarProperty Name="MULTI_DRIVER" ColumnName="MULTI_DRIVER" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="TRUNK" ColumnName="TRUNK" />
+                <ScalarProperty Name="MAINTANANCE" ColumnName="MAINTANANCE" />
+                <ScalarProperty Name="FUEL_CONSUME" ColumnName="FUEL_CONSUME" />
+                <ScalarProperty Name="SECURE" ColumnName="SECURE" />
+                <ScalarProperty Name="SECURE1" ColumnName="SECURE1" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SUB_MODEL" ColumnName="SUB_MODEL" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCars" FunctionName="autologiaModel.Store.spGetCars">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetCars_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR_DESC" ColumnName="MANUFACTOR_DESC" />
+                <ScalarProperty Name="MODEL_DESC" ColumnName="MODEL_DESC" />
+                <ScalarProperty Name="SUB_MODEL_DESC" ColumnName="SUB_MODEL_DESC" />
+                <ScalarProperty Name="MAIN_TYPE_DESC" ColumnName="MAIN_TYPE_DESC" />
+                <ScalarProperty Name="SUB_TYPE_DESC" ColumnName="SUB_TYPE_DESC" />
+                <ScalarProperty Name="SMALL_IMAGE" ColumnName="SMALL_IMAGE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCars_old" FunctionName="autologiaModel.Store.spGetCars_old">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetCars_old_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR" ColumnName="MANUFACTOR" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SUB_MODEL" ColumnName="SUB_MODEL" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="MAIN_TYPE" ColumnName="MAIN_TYPE" />
+                <ScalarProperty Name="SUB_TYPE" ColumnName="SUB_TYPE" />
+                <ScalarProperty Name="LICENSE" ColumnName="LICENSE" />
+                <ScalarProperty Name="SEATS" ColumnName="SEATS" />
+                <ScalarProperty Name="DORS" ColumnName="DORS" />
+                <ScalarProperty Name="FUEL_TYPE" ColumnName="FUEL_TYPE" />
+                <ScalarProperty Name="GEER" ColumnName="GEER" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="TRUNK" ColumnName="TRUNK" />
+                <ScalarProperty Name="ACCESSORY" ColumnName="ACCESSORY" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="SEAT_5" ColumnName="SEAT_5" />
+                <ScalarProperty Name="VISUAL_SPACE" ColumnName="VISUAL_SPACE" />
+                <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+                <ScalarProperty Name="MAINTANANCE" ColumnName="MAINTANANCE" />
+                <ScalarProperty Name="RELIABILITY" ColumnName="RELIABILITY" />
+                <ScalarProperty Name="TRADE" ColumnName="TRADE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="SECURE" ColumnName="SECURE" />
+                <ScalarProperty Name="GAS_COMPATIBLE" ColumnName="GAS_COMPATIBLE" />
+                <ScalarProperty Name="IGNITION" ColumnName="IGNITION" />
+                <ScalarProperty Name="HEAT_STAND" ColumnName="HEAT_STAND" />
+                <ScalarProperty Name="SMOKERS" ColumnName="SMOKERS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MULTI_DRIVER" ColumnName="MULTI_DRIVER" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="OPPINION_FOR" ColumnName="OPPINION_FOR" />
+                <ScalarProperty Name="OPPINION_AGAINST" ColumnName="OPPINION_AGAINST" />
+                <ScalarProperty Name="LINKS" ColumnName="LINKS" />
+                <ScalarProperty Name="AVIRUT_SHETAH" ColumnName="AVIRUT_SHETAH" />
+                <ScalarProperty Name="UNIQUE_IDENTIFIER" ColumnName="UNIQUE_IDENTIFIER" />
+                <ScalarProperty Name="SUB_MODEL_DESC" ColumnName="SUB_MODEL_DESC" />
+                <ScalarProperty Name="YEAR_DESC" ColumnName="YEAR_DESC" />
+                <ScalarProperty Name="COUNTRY_DESC" ColumnName="COUNTRY_DESC" />
+                <ScalarProperty Name="MAIN_TYPE_DESC" ColumnName="MAIN_TYPE_DESC" />
+                <ScalarProperty Name="SUB_TYPE_DESC" ColumnName="SUB_TYPE_DESC" />
+                <ScalarProperty Name="LICENSE_DESC" ColumnName="LICENSE_DESC" />
+                <ScalarProperty Name="SEATS_DESC" ColumnName="SEATS_DESC" />
+                <ScalarProperty Name="FUEL_TYPE_DESC" ColumnName="FUEL_TYPE_DESC" />
+                <ScalarProperty Name="GEER_DESC" ColumnName="GEER_DESC" />
+                <ScalarProperty Name="SIZE_DESC" ColumnName="SIZE_DESC" />
+                <ScalarProperty Name="TRUNK_DESC" ColumnName="TRUNK_DESC" />
+                <ScalarProperty Name="RESPONSE_DESC" ColumnName="RESPONSE_DESC" />
+                <ScalarProperty Name="SEAT_5_DESC" ColumnName="SEAT_5_DESC" />
+                <ScalarProperty Name="ROAD_DESC" ColumnName="ROAD_DESC" />
+                <ScalarProperty Name="MAINTANANCE_DESC" ColumnName="MAINTANANCE_DESC" />
+                <ScalarProperty Name="RELIABILITY_DESC" ColumnName="RELIABILITY_DESC" />
+                <ScalarProperty Name="TRADE_DESC" ColumnName="TRADE_DESC" />
+                <ScalarProperty Name="VALUE_DESC" ColumnName="VALUE_DESC" />
+                <ScalarProperty Name="SECURE_DESC" ColumnName="SECURE_DESC" />
+                <ScalarProperty Name="GAS_COMPATIBLE_DESC" ColumnName="GAS_COMPATIBLE_DESC" />
+                <ScalarProperty Name="IGNITION_DESC" ColumnName="IGNITION_DESC" />
+                <ScalarProperty Name="HEAT_STAND_DESC" ColumnName="HEAT_STAND_DESC" />
+                <ScalarProperty Name="SMOKERS_DESC" ColumnName="SMOKERS_DESC" />
+                <ScalarProperty Name="AVIRUT_SHETAH_DESC" ColumnName="AVIRUT_SHETAH_DESC" />
+                <ScalarProperty Name="MULTI_DRIVER_DESC" ColumnName="MULTI_DRIVER_DESC" />
+                <ScalarProperty Name="PERCEPTION_DESC" ColumnName="PERCEPTION_DESC" />
+                <ScalarProperty Name="VISUAL_SPACE_DESC" ColumnName="VISUAL_SPACE_DESC" />
+                <ScalarProperty Name="DRIVER_DESC" ColumnName="DRIVER_DESC" />
+                <ScalarProperty Name="BODY" ColumnName="BODY" />
+                <ScalarProperty Name="BODY_DESC" ColumnName="BODY_DESC" />
+                <ScalarProperty Name="DORS_DESC" ColumnName="DORS_DESC" />
+                <ScalarProperty Name="ACCESSORY_DESC" ColumnName="ACCESSORY_DESC" />
+                <ScalarProperty Name="FUEL_CONSUME" ColumnName="FUEL_CONSUME" />
+                <ScalarProperty Name="FEUL_CONSUME_DESC" ColumnName="FEUL_CONSUME_DESC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCarsExAsString" FunctionName="autologiaModel.Store.spGetCarsExAsString" />
+          <FunctionImportMapping FunctionImportName="spGetLookupDetailItem" FunctionName="autologiaModel.Store.spGetLookupDetailItem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetLookupDetailItem_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAIN_LOOKUP_ID" ColumnName="MAIN_LOOKUP_ID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetlookupDetails" FunctionName="autologiaModel.Store.spGetlookupDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetlookupDetails_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAIN_LOOKUP_ID" ColumnName="MAIN_LOOKUP_ID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetLookupItem" FunctionName="autologiaModel.Store.spGetLookupItem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetLookupItem_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="MENU_REF_ID" ColumnName="MENU_REF_ID" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="VALUES_MANUAL" ColumnName="VALUES_MANUAL" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetLookups" FunctionName="autologiaModel.Store.spGetLookups">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetLookups_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="MENU_REF_ID" ColumnName="MENU_REF_ID" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="VALUES_MANUAL" ColumnName="VALUES_MANUAL" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetMainLookupManual" FunctionName="autologiaModel.Store.spGetMainLookupManual" />
+          <FunctionImportMapping FunctionImportName="spGetMainLookupValuesManual" FunctionName="autologiaModel.Store.spGetMainLookupValuesManual" />
+          <FunctionImportMapping FunctionImportName="spGetMainTypes" FunctionName="autologiaModel.Store.spGetMainTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetMainTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetManufactures" FunctionName="autologiaModel.Store.spGetManufactures">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetManufactures_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetMenu" FunctionName="autologiaModel.Store.spGetMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="LINKED_TO" ColumnName="LINKED_TO" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="SUMMERY_EDIT" ColumnName="SUMMERY_EDIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetMenus" FunctionName="autologiaModel.Store.spGetMenus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetMenus_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="LINKED_TO" ColumnName="LINKED_TO" />
+                <ScalarProperty Name="MANUAL" ColumnName="MANUAL" />
+                <ScalarProperty Name="SUMMERY_EDIT" ColumnName="SUMMERY_EDIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetModels" FunctionName="autologiaModel.Store.spGetModels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetModels_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR_ID" ColumnName="MANUFACTOR_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetMySearches" FunctionName="autologiaModel.Store.spGetMySearches" />
+          <FunctionImportMapping FunctionImportName="spGetSubModels" FunctionName="autologiaModel.Store.spGetSubModels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetSubModels_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MANUFACTOR_ID" ColumnName="MANUFACTOR_ID" />
+                <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="SMALL_IMAGE" ColumnName="SMALL_IMAGE" />
+                <ScalarProperty Name="BIG_IMAGE" ColumnName="BIG_IMAGE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetSubType" FunctionName="autologiaModel.Store.spGetSubType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetSubType_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MAIN_ID" ColumnName="MAIN_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetSubTypes" FunctionName="autologiaModel.Store.spGetSubTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetSubTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MAIN_ID" ColumnName="MAIN_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUser" FunctionName="autologiaModel.Store.spGetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autologiaModel.spGetUser_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSaveManual" FunctionName="autologiaModel.Store.spSaveManual" />
+          <FunctionImportMapping FunctionImportName="spSaveSummeryEdit" FunctionName="autologiaModel.Store.spSaveSummeryEdit" />
+          <FunctionImportMapping FunctionImportName="spUpdateMainLookupManual" FunctionName="autologiaModel.Store.spUpdateMainLookupManual" />
+          <FunctionImportMapping FunctionImportName="spUpdateMainLookupValuesManual" FunctionName="autologiaModel.Store.spUpdateMainLookupValuesManual" />
+          <FunctionImportMapping FunctionImportName="spUpdateManufactorLink" FunctionName="autologiaModel.Store.spUpdateManufactorLink" />
+          <FunctionImportMapping FunctionImportName="spUpdateManufactur" FunctionName="autologiaModel.Store.spUpdateManufactur" />
+          <FunctionImportMapping FunctionImportName="spUpdatePrice" FunctionName="autologiaModel.Store.spUpdatePrice" />
+          <FunctionImportMapping FunctionImportName="spUpdateSubModel" FunctionName="autologiaModel.Store.spUpdateSubModel" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

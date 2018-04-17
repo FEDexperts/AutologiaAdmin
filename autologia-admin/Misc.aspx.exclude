@@ -1,0 +1,25 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="Misc.aspx.cs" Inherits="Admin_Misc" %>
+<%@ MasterType VirtualPath="~/MasterPage.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <fieldset style="width: 300px">
+        <legend>סיבות להצטרפות לאוטולוגיה</legend>
+        <div>
+            <asp:ListBox ID="ListBoxJoinReasons" runat="server" DataTextField="Description" DataValueField="Id"
+                Width="100%" Height="160px" AutoPostBack="true" OnSelectedIndexChanged="JoinReasonSelected">
+            </asp:ListBox>
+            <asp:TextBox ID="TextBoxReason" runat="server" Width="98%" BackColor="ActiveCaption"></asp:TextBox>
+        </div>
+        <div>
+            <asp:Button ID="ButtonUpdateReason" runat="server" Text="עדכן" OnClick="UpdateReason"
+                CssClass="Button" Enabled="true" />
+            <asp:Button ID="ButtonNewReason" runat="server" Text="שמור" OnClick="NewReason" CssClass="Button"
+                Enabled="true" />
+            <asp:Button ID="ButtonDeleteReason" runat="server" Text="מחיקה" OnClick="DeleteReason"
+                CssClass="Button" Enabled="true" />
+        </div>
+    </fieldset>
+</asp:Content>

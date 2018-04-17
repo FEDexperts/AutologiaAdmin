@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutologiaDataAccess", "AutologiaDataAccess\AutologiaDataAccess.csproj", "{8A7E96CB-1A23-451B-B47C-D43707D5AAE3}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "autologiaAdmin", "http://localhost/autologiaAdmin", "{260F4896-4F4E-442F-8B52-41B34D5AF907}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		ProjectReferences = "{8a7e96cb-1a23-451b-b47c-d43707d5aae3}|AutologiaDataAccess.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/AutologiaAdmin"
+		Debug.AspNetCompiler.PhysicalPath = "autologia-admin\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AutologiaAdmin\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/AutologiaAdmin"
+		Release.AspNetCompiler.PhysicalPath = "autologia-admin\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AutologiaAdmin\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "autologia-admin\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "autologiaWebApi", "http://localhost/autologiaWebApi", "{0B1F97F0-EE19-417F-9B47-148D955BB5FD}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/autologiaWebApi"
+		Debug.AspNetCompiler.PhysicalPath = "AutologiaWebApi\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\autologiaWebApi\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/autologiaWebApi"
+		Release.AspNetCompiler.PhysicalPath = "AutologiaWebApi\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\autologiaWebApi\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "AutologiaWebApi\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutologiaShare", "AutologiaShare\AutologiaShare.csproj", "{43CC6323-8190-42D0-86F9-9BDD819DB612}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A7E96CB-1A23-451B-B47C-D43707D5AAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7E96CB-1A23-451B-B47C-D43707D5AAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7E96CB-1A23-451B-B47C-D43707D5AAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7E96CB-1A23-451B-B47C-D43707D5AAE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260F4896-4F4E-442F-8B52-41B34D5AF907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260F4896-4F4E-442F-8B52-41B34D5AF907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260F4896-4F4E-442F-8B52-41B34D5AF907}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{260F4896-4F4E-442F-8B52-41B34D5AF907}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0B1F97F0-EE19-417F-9B47-148D955BB5FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1F97F0-EE19-417F-9B47-148D955BB5FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1F97F0-EE19-417F-9B47-148D955BB5FD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1F97F0-EE19-417F-9B47-148D955BB5FD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{43CC6323-8190-42D0-86F9-9BDD819DB612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CC6323-8190-42D0-86F9-9BDD819DB612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CC6323-8190-42D0-86F9-9BDD819DB612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CC6323-8190-42D0-86F9-9BDD819DB612}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

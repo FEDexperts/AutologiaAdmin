@@ -1,0 +1,243 @@
+﻿/*Modal Popup*/
+.modalBackground {
+	background-color:Scrollbar;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+}
+
+.modalPopup {
+	background-color:White;
+	border-width:2px;
+	border-style:solid;
+	border-color:Scrollbar;
+	padding:3px;
+	width:250px;
+}
+
+
+.orangeBorder
+{
+    border: solid 2px #ffa20a;
+}
+
+.grayBorder
+{
+    border: solid 2px ScrollBar;
+}
+
+/* DEFAULTS
+----------------------------------------------------------*/
+
+body   
+{
+    background-color: white;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #696969;
+    text-align: center;
+    margin: auto;
+    width: 1007px;
+}
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1em;
+    border: 2px solid #ccc;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline 
+{
+    display: inline;
+}
+
+legend 
+{
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 2px 4px 8px 4px;
+    color: #99cc3a;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.errorMessage {color: Red; font-size: 12pt}
+
+.footerColumn { width: 100px; vertical-align: top; display: block }
+.footerManufactorColumn { width: 70px; vertical-align: top; display: block }
+.footerText { font-family: Arial; text-decoration: none; color: #a5a0a0; cursor: pointer; }
+
+/* Search Car Menu */
+.SearchCarNewSearch { float: left; width: 291px; height: 70px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_09.png); background-repeat: no-repeat; font-size: 18pt; color: Gray; font-weight: bolder; letter-spacing: 1px; margin-bottom: 30px; margin-left: 70px; }
+.SearchCarMenuCounter { height: 20px; width: 400px; text-align: center; font-family: Arial; font-size: 12pt; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; border: solid 2px scrollbar; font-weight: bold; margin: 3px; padding-top: 5px; }
+.SearchCarMainMenu { float: right; height: 70px; width: 100px; text-align: center; font-family: Arial; font-size: 28px; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; height: 71px; border: solid 2px scrollbar; font-weight: bold; margin: 3px; }
+.SearchCarSubMenu { float: right; height: 70px; width: 290px; text-align: center; font-family: Arial; font-size: 24px; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; height: 71px; border: solid 2px scrollbar; margin: 3px 3px 3px 10px; font-weight: bold; }
+.SearchCarSubSubMenu { float: right; height: 50px; width: 130px; text-align: center; font-family: Arial; font-weight:bold; font-size: 16px; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; margin: 8px 3px 3px 3px; padding-top: 25px; }
+.SearchCarSubSubMenuOver { float: right; height: 50px; width: 130px; text-align: center; font-family: Arial; font-weight:bold; font-size: 16px; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; margin: 8px 3px 3px 3px; color: #fc8700; padding-top: 25px; }
+.SearchCarSummary { padding-top: 10px; vertical-align: top; text-align: center; width: 500px; }
+.searchSummery { width: 250px; height: auto; text-align: right; }
+
+.Color1 { color: #99cc00; }
+.Color2 { color: #778899; }
+.Color3 { color: #FF7F50; }
+.Color4 { color: #808000; }
+.Color5 { color: #5899B9; }
+.Color6 { color: #808080; }
+
+.fieldset, .searchCarFieldset1 { margin: 5px; border-color: #99cc00; }
+.fieldset, .searchCarFieldset2 { margin: 5px; border-color: #778899; }
+.fieldset, .searchCarFieldset3 { margin: 5px; border-color: #FF7F50; }
+.fieldset, .searchCarFieldset4 { margin: 5px; border-color: #808000; }
+.fieldset, .searchCarFieldset5 { margin: 5px; border-color: #5899B9; }
+.fieldset, .searchCarFieldset6 { margin: 5px; border-color: #808080; }
+.legend, .searchCarFieldsetLegend1 { color: #99cc00; }
+.legend, .searchCarFieldsetLegend2 { color: #778899; }
+.legend, .searchCarFieldsetLegend3 { color: #FF7F50; }
+.legend, .searchCarFieldsetLegend4 { color: #808000; }
+.legend, .searchCarFieldsetLegend5 { color: #5899B9; }
+.legend, .searchCarFieldsetLegend6 { color: #808080; }
+
+.regLabel { width: 80px; font-size: 16px; font-weight: bold; text-align: right; }
+.regLinks { color: Gray; font-size: 16px; text-decoration: none; }
+.regTextBox { border: solid 2px #a296a4; font-family: Arial (Hebrew); font-size: 12px; height: 20px; width: 200px; }
+.regEmail { direction: ltr; }
+.reg-fieldset { width: 400px; height: auto; }
+
+.SearchCarManual { height: 150px; vertical-align: top; border: 2px solid #a5a0a0; }
+
+.Button { font-family: Arial (Hebrew); font-size: 18px; width: 120px; color: #fc8700; }
+.link-button { font-weight: bold; font-size: 14px; }
+.search-button { height: 70px; width: 400px; text-align: center; font-family: Arial; font-size: 28px; cursor: pointer; background-image: url(Images/Footer_06.png); background-repeat: repeat-x; height: 71px; border: solid 2px scrollbar; font-weight: bold; margin: 3px; }
+.file-upload  { font-family: Arial (Hebrew); font-size: 18px; color: #fc8700; }
+
+.searchResultsTopBox { height: 30px; cursor: pointer; text-align: center; border: solid 1px #a5a0a0; }
+.searchResultsBox { width: 250px; height: 70px; cursor: pointer; text-align: center; border: solid 2px ScrollBar; }
+.searchResultPoints { color: #99cc3a; font-weight: bold; }
+.searchResultMainImage { width: 100%; height: 200px; }
+.searchResultImage { width: 124px; height: 65px; }
+.searchManual { line-height: 30px; text-align: justify; font-weight: bold; font-family: Arial (Hebrew); font-size: 14px; border: solid 2px Scrollbar; padding-right: 10px; width: 300px; }
+.searchCategoryTitle { font-size: 16px; font-weight: bold; float: left; }
+.searchCategory { width: 200px; }
+
+.searchResultBox
+{
+    margin: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.searchResultMainBox
+{
+    height: 265px;
+}
+
+.searchResultBoxOff { display: none; }
+.searchResultBoxOn { display: block; width: 205px; cursor: pointer; }
+.searchResultMainBoxOn { display: block; width: 650px; height: 300px; cursor: pointer; }
+.searchResultMainBoxOff { display: none; }
+.searchResultRowOn { height: 150px; display: block; }
+.searchResultRowOff { display: none; }
+.ResultsOn { display: none; }
+.ResultsOff { display: block; font-family: Arial; font-size: xx-large; }
+.searchResultSaveOn { display: block; margin-top: 10px; font-weight: bold; }
+.searchResultSaveOff { display: none; }
+.search-result-left-summery-title { text-align: center; font-family: Arial; font-weight: bold; font-size: 16pt; }
+
+.searchHighestResultOn { display: block; width: 650px; height: 600px; border: solid 0px #a5a0a0; margin-bottom: 10px; }
+.searchHighestResultOff { display: none; }
+.searchHighestResultImage { width: 200px; height: 200px; }
+.searchHighestResultMiddle { width: 350px; text-align: center; font-size: 16px; cursor: pointer; }
+.searchHighestResultSides { width: 150px; font-size: 40px; color: #99cc3a; text-align: center; }
+
+.searchManufactors { width: 70px; height: 400px; }
+.searchManufactorsOn { border-bottom: solid 2px ScrollBar; width: 65px; height: 65px; margin-bottom: 10px; display: block; }
+.searchManufactorsOff { border-bottom: solid 0px ScrollBar; width: 67px; height: 67px; margin-bottom: 10px; display: block; }
+.searchManufactorsManual { width: 350px; height: 300px; border: solid 1px ScrollBar; }
+
+.displayOff { display: none; }
+
+.aboutUsText { width: 70%; line-height: 30px; text-align: justify; font-weight: bold; font-family: Arial (Hebrew); font-size: 14px }
+
+.summeryEmpty { color: #a6a1a1; text-decoration: none; }
+.summeryFull, a { color: #ffa20a; text-decoration: none; }
+.summery-title { text-decoration: underline; font-weight: bold; font-size: small; margin-left: 5px; }
+
+.right { float: right; }
+.left { float: left; }
+.hide { display: none; }
+
+.topMenuOn { float: right; width: 143px; height: 64px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_05.png); background-repeat: no-repeat; font-size: 16pt; color: Gray; padding-top: 3px; font-weight: bolder; letter-spacing: 1px; }
+.topMenuOff { float: right; width: 143px; height: 60px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_03.png); background-repeat: no-repeat; font-size: 13pt; color: Gray; padding-top: 10px; font-weight: bolder; }
+.topMenuOn1 { float: right; width: 143px; height: 51px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_05.png); background-repeat: no-repeat; font-size: 18pt; color: Gray; padding-top: 16px; font-weight: bolder; }
+.topMenuOff1 { float: right; width: 143px; height: 48px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_03.png); background-repeat: no-repeat; font-size: 13pt; color: Gray; padding-top: 22px; font-weight: bolder; }
+.topMenuLongOn { float: right; width: 291px; height: 52px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_09.png); background-repeat: no-repeat; font-size: 18pt; color: Gray; padding-top: 16px; font-weight: bolder; letter-spacing: 1px; }
+.topMenuLongOff { float: right; width: 291px; height: 48px; border: solid 0px scrollbar; cursor: pointer; background-image: url(images/TopMenu_11.png); background-repeat: no-repeat; font-size: 13pt; color: Gray; padding-top: 22px; font-weight: bolder; }
+
+.instructions-box { font-size: 16px; font-weight: bold; float: right; display: block; text-align: right; height: auto; }
+.instructionsImage { margin-top: 7px; }
+.instructions { margin-right: 8px; font-size: 18pt; font-weight: bold; }
+
+.admin-row { border-top: solid 1px ScrollBar; border-bottom: solid 1px ScrollBar; }
+
+.car-details-image { width: 173px; height: 90px; }
+
+#divUpControl{position:absolute; width:0px;	left:0px; top:0px; z-index:1; text-align: right; height: 0px; } 
+#divDownControl{position:absolute; width:0px; left:330px; top:304px; z-index:1; text-align: right} 
+#divContainer{position:relative; width:260; height:280; overflow:hidden; top:0px; left:25px;  visibility:hidden;} 
+#divContent{position:relative; top:0; left:0;} 
+
+.first-result-text { font-family: Arial; font-size: 24px; color: #99cc3a }
+.number-container { width: 400px; }
+.number-row { height: 40px; }
+.number { width: 30px; height: 30px; background-color: #99cc3a; color: White; font-size: 18px; font-weight: bold; }
+.number-text { font-size: 18px; margin-right: 15px; }
+
+.more-info-box { font-size: 12px; cursor: pointer; margin: 10px; width: 710px; }
+.more-info-item-long { width: 200px; }
+.more-info-item { width: 150px; height: 30px; }
+.more-info-row-1 { height: auto; width: 215px; }
+.more-info-row-2 { height: 90px; }
+.more-info-box-display{ display: block; height: auto; }
+.moreInfoLabel { text-decoration: underline; font-weight: bold; font-size: small; margin-left: 5px; }
+
+.cars-filter { margin: 10px; text-align: right; }
+
+.contact-us-image { margin-right: 15px }
+.contact-us-text { margin-right: 10px; margin-top: 3px; font-weight: normal; font-family: Arial; font-size: 12pt; color: Gray; }
+.contact-us-number { margin-right: 10px; margin-top: 7px; font-weight: normal; font-family: Arial; font-size: 11pt; color: Gray; }
+
+.results-side-logo
+{
+    width: 65px;
+    height: 60px;
+    border: solid 1px;
+}
