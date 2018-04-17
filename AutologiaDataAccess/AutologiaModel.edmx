@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="autologiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="autologiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'autologia.auto.AdminUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AdminUsers">
@@ -252,13 +252,6 @@ warning 6002: The table/view 'autologia.auto.Questions' does not have a primary 
           <Property Name="ANSWER_ID" Type="int" Nullable="false" />
           <Property Name="ORDER" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'autologia.auto.QuestionsTypes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="QuestionsTypes">
-          <Property Name="ID" Type="int" />
-          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="30" />
-          <Property Name="POINTS" Type="int" />
-        </EntityType>-->
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="ID" />
@@ -282,8 +275,8 @@ warning 6013: The table/view 'autologia.auto.QuestionsTypes' does not have a pri
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'CarMultiAnswer_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="CarMultiAnswer_fk" />-->
+warning 6035: The relationship 'CarMultiAnswer_Cars_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="CarMultiAnswer_Cars_fk" />-->
         <Association Name="CarMultiAnswer_fk2">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
           <End Role="CarMultiAnswer" Type="Self.CarMultiAnswer" Multiplicity="*" />
@@ -394,9 +387,6 @@ warning 6035: The relationship 'CarMultiAnswer_fk' has columns that are not part
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relationship, but cannot be found.
-        <Association Name="QuestionsAnswers_fk" />-->
         <Association Name="QuestionsAnswers_fk2">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
           <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
@@ -699,8 +689,7 @@ error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relatio
             <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="autologiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1192,7 +1181,7 @@ error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relatio
             <Parameter Name="CarId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spAddMainType">
-            <Parameter Name="value" Mode="In" Type="String" />
+          <Parameter Name="value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spAddManufactur">
             <Parameter Name="NAME" Mode="In" Type="String" />
@@ -1227,33 +1216,33 @@ error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relatio
             <Parameter Name="ID" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteCar">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteLookups">
-            <Parameter Name="MainLookup" Mode="In" Type="Int32" />
+          <Parameter Name="MainLookup" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteMainTypes" />
           <FunctionImport Name="spDeleteManufactor">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteManufactures" />
           <FunctionImport Name="spDeleteModel">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteModels">
-            <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
+          <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteSearch">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteSubModel">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteSubModels">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spForgotPassword" ReturnType="Collection(String)">
-            <Parameter Name="email" Mode="In" Type="String" />
+          <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetAdminUser" ReturnType="Collection(autologiaModel.spGetAdminUser_Result)">
             <Parameter Name="userName" Mode="In" Type="String" />
@@ -1275,43 +1264,43 @@ error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relatio
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetlookupDetails" ReturnType="Collection(autologiaModel.spGetlookupDetails_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetLookupItem" ReturnType="Collection(autologiaModel.spGetLookupItem_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetLookups" ReturnType="Collection(autologiaModel.spGetLookups_Result)">
-            <Parameter Name="menuRef" Mode="In" Type="Int32" />
+          <Parameter Name="menuRef" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetMainLookupManual" ReturnType="Collection(String)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetMainLookupValuesManual" ReturnType="Collection(String)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetMainTypes" ReturnType="Collection(autologiaModel.spGetMainTypes_Result)" />
           <FunctionImport Name="spGetManufactures" ReturnType="Collection(autologiaModel.spGetManufactures_Result)" />
           <FunctionImport Name="spGetMenu" ReturnType="Collection(autologiaModel.spGetMenu_Result)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetMenus" ReturnType="Collection(autologiaModel.spGetMenus_Result)">
-            <Parameter Name="ParentId" Mode="In" Type="Int32" />
+          <Parameter Name="ParentId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetModels" ReturnType="Collection(autologiaModel.spGetModels_Result)">
-            <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
+          <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetMySearches">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
+          <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetSubModels" ReturnType="Collection(autologiaModel.spGetSubModels_Result)">
             <Parameter Name="ManufactorId" Mode="In" Type="Int32" />
             <Parameter Name="ModelId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetSubType" ReturnType="Collection(autologiaModel.spGetSubType_Result)">
-            <Parameter Name="MainId" Mode="In" Type="Int32" />
+          <Parameter Name="MainId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetSubTypes" ReturnType="Collection(autologiaModel.spGetSubTypes_Result)">
-            <Parameter Name="MainId" Mode="In" Type="Int32" />
+          <Parameter Name="MainId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetUser" ReturnType="Collection(autologiaModel.spGetUser_Result)">
             <Parameter Name="email" Mode="In" Type="String" />
@@ -2123,7 +2112,7 @@ error 6004: The table 'autologia.auto.QuestionsTypes' is referenced by a relatio
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -197,6 +197,15 @@ namespace AutologiaDataAccess
             }
         }
 
+        public List<int> GetCarMultiAnswer(int carId, int questionId)
+        {
+            using(var ctx = new autologiaEntities())
+            {
+                List<int> answers = ctx.CarMultiAnswer.Where(p => p.CAR_ID == carId && p.QUESTION_ID == questionId).SelectMany(p => new int[] { p.ANSWER_ID.Value }).ToList();
+                return answers;
+            }
+        }
+
         public void DeleteCar(int id)
         {
             using(var ctx = new autologiaEntities())

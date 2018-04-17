@@ -11,6 +11,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 {
     Cars car;
     Admin admin = new Admin();
+    int carId;
 
     public enum EditTypeCode
     {
@@ -30,9 +31,9 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             if (Request.QueryString != null && Request.QueryString["id"] != null)
             {
                 EditType = EditTypeCode.EtModify;
-                var id = Request.QueryString["id"];
-                car = admin.GetCar(Convert.ToInt32(id));
-                InitEdit(Convert.ToInt32(id));
+                carId = Convert.ToInt32(Request.QueryString["id"]);
+                car = admin.GetCar(carId);
+                InitEdit();
             }
             else
             {
@@ -104,8 +105,11 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         FillCheckBoxList(DropDownListTrunkSize, Constants.TRUNK_SIZE, car.TRUNK, typeId);
         FillCheckBoxList(DropDownListAccessoriesLevel, Constants.FEATURES, car.ACCESSORY, typeId);
         FillCheckBoxList(DropDownListResponse, Constants.RESPONSE, car.RESPONSE, typeId);
-        //FillMultiCheckBoxList(CheckBoxListPerception, Constants.PERCEPTION_MATCH, car.Perception, typeId);
-        //FillMultiCheckBoxList(CheckBoxListDriverSize, Constants.DRIVER_SIZE, car.Driver, typeId);
+
+        var result = admin.GetCarMultiAnswer(carId, Constants.PERCEPTION_MATCH);
+        FillMultiCheckBoxList(CheckBoxListPerception, Constants.PERCEPTION_MATCH, result, typeId);
+        result = admin.GetCarMultiAnswer(carId, Constants.DRIVER_SIZE);
+        FillMultiCheckBoxList(CheckBoxListDriverSize, Constants.DRIVER_SIZE, result, typeId);
         FillCheckBoxList(DropDownListMaintanance, Constants.MAINTANANCE, car.MAINTANANCE, typeId);
         FillCheckBoxList(DropDownListFuelConsume, Constants.FEUL_CONSUMING, car.FUEL_CONSUME, typeId);
         FillCheckBoxList(DropDownListSafety, Constants.SAFETY, car.SECURE, typeId);
@@ -319,7 +323,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         return (from ListItem p in checkBoxList.Items where p.Selected select p.Text).ToList();
     }
 
-    private void InitEdit(int id)
+    private void InitEdit()
     {
         try
         {
@@ -349,7 +353,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             TextBoxAgainst.Text = car.OPPINION_AGAINST;
             TextBoxPrice.Text = car.PRICE.ToString();
 
-            InitLists(car.MAIN_TYPE.Value);
+            InitLists(car, car.MAIN_TYPE.Value);
         }
         catch
         {
