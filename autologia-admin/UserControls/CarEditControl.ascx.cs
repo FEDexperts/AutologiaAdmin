@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 {
-    Cars car;
+    Cars car = null;
     Admin admin = new Admin();
     int carId;
 
@@ -69,70 +69,56 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         ddSubType.DataSource = admin.GetSubTypes(carMainType);
         ddSubType.DataBind();
 
-        InitLists(car.MAIN_TYPE.Value);
+        InitLists();
     }
-    private void InitLists(int typeId)
+
+    private void InitLists()
     {
-        FillDropDownList2(DropDownListYear, Constants.YEAR, null);
-        FillDropDownList2(DropDownListCountry, Constants.COUNTRY, null);
-        FillCheckBoxList(ddSeats, Constants.SEATS, null, typeId);
-        FillCheckBoxList(DropDownListDors, Constants.DORS, null, typeId);
-        FillCheckBoxList(ddFeulType, Constants.FEUL_TYPE, null, typeId);
-        FillCheckBoxList(CheckBoxListGeer, Constants.GEAR, null, typeId);
-        FillCheckBoxList(DropDownListCarSize, Constants.CAR_SIZE, null, typeId);
-        FillCheckBoxList(DropDownListTrunkSize, Constants.TRUNK_SIZE, null, typeId);
-        FillCheckBoxList(DropDownListAccessoriesLevel, Constants.FEATURES, null, typeId);
-        FillCheckBoxList(DropDownListResponse, Constants.RESPONSE, null, typeId);
-        FillCheckBoxList(CheckBoxListPerception, Constants.PERCEPTION_MATCH, null, typeId);
-        FillCheckBoxList(CheckBoxListDriverSize, Constants.DRIVER_SIZE, null, typeId);
-        FillCheckBoxList(DropDownListMaintanance, Constants.MAINTANANCE, null, typeId);
-        FillCheckBoxList(DropDownListFuelConsume, Constants.FEUL_CONSUMING, null, typeId);
-        FillCheckBoxList(DropDownListSafety, Constants.SAFETY, null, typeId);
-        FillCheckBoxList(DropDownListMultiDriver, Constants.MULTI_DRIVER, null, typeId);
-        FillCheckBoxList(ddSurface, Constants.ROAD, null, typeId);
-        FillCheckBoxList(ddVisualPerspective, Constants.VISUAL_SPACE, null, typeId);
-        FillCheckBoxList(ddIgnition, Constants.IGNITION, null, typeId);
-    }
-    private void InitLists(Cars car, int typeId)
-    {
-        FillDropDownList2(DropDownListYear, Constants.YEAR, car.YEAR);
-        FillDropDownList2(DropDownListCountry, Constants.COUNTRY, car.COUNTRY);
-        FillCheckBoxList(ddSeats, Constants.SEATS, car.SEATS, typeId);
-        FillCheckBoxList(DropDownListDors, Constants.DORS, car.DORS, typeId);
-        FillCheckBoxList(ddFeulType, Constants.FEUL_TYPE, car.FUEL_TYPE, typeId);
-        FillCheckBoxList(CheckBoxListGeer, Constants.GEAR, car.GEER, typeId);
-        FillCheckBoxList(DropDownListCarSize, Constants.CAR_SIZE, car.SIZE, typeId);
-        FillCheckBoxList(DropDownListTrunkSize, Constants.TRUNK_SIZE, car.TRUNK, typeId);
-        FillCheckBoxList(DropDownListAccessoriesLevel, Constants.FEATURES, car.ACCESSORY, typeId);
-        FillCheckBoxList(DropDownListResponse, Constants.RESPONSE, car.RESPONSE, typeId);
+        FillDropDownList(DropDownListYear, Constants.YEAR, car == null ? -1 : car.YEAR);
+        FillDropDownList(DropDownListCountry, Constants.COUNTRY, car == null ? null : car.COUNTRY);
+        FillCheckBoxList(ddSeats, Constants.SEATS, car == null ? null : car.SEATS);
+        FillCheckBoxList(DropDownListDors, Constants.DORS, car == null ? null : car.DORS);
+        FillCheckBoxList(ddFeulType, Constants.FEUL_TYPE, car == null ? null : car.FUEL_TYPE);
+        FillCheckBoxList(CheckBoxListGeer, Constants.GEAR, car == null ? -1 : car.GEER);
+        FillCheckBoxList(DropDownListCarSize, Constants.CAR_SIZE, car == null ? null : car.SIZE);
+        FillCheckBoxList(DropDownListTrunkSize, Constants.TRUNK_SIZE, car == null ? null : car.TRUNK);
+        FillCheckBoxList(DropDownListAccessoriesLevel, Constants.FEATURES, car == null ? null : car.ACCESSORY);
+        FillCheckBoxList(DropDownListResponse, Constants.RESPONSE, car == null ? null : car.RESPONSE);
 
         var result = admin.GetCarMultiAnswer(carId, Constants.PERCEPTION_MATCH);
-        FillMultiCheckBoxList(CheckBoxListPerception, Constants.PERCEPTION_MATCH, result, typeId);
+        FillMultiCheckBoxList(CheckBoxListPerception, Constants.PERCEPTION_MATCH, result);
         result = admin.GetCarMultiAnswer(carId, Constants.DRIVER_SIZE);
-        FillMultiCheckBoxList(CheckBoxListDriverSize, Constants.DRIVER_SIZE, result, typeId);
-        FillCheckBoxList(DropDownListMaintanance, Constants.MAINTANANCE, car.MAINTANANCE, typeId);
-        FillCheckBoxList(DropDownListFuelConsume, Constants.FEUL_CONSUMING, car.FUEL_CONSUME, typeId);
-        FillCheckBoxList(DropDownListSafety, Constants.SAFETY, car.SECURE, typeId);
-        FillCheckBoxList(DropDownListMultiDriver, Constants.MULTI_DRIVER, car.MULTI_DRIVER, typeId);
-        FillCheckBoxList(ddSurface, Constants.ROAD, car.ROAD, typeId);
-        FillCheckBoxList(ddVisualPerspective, Constants.VISUAL_SPACE, car.VISUAL_SPACE, typeId);
-        FillCheckBoxList(ddIgnition, Constants.IGNITION, car.IGNITION, typeId);
+        FillMultiCheckBoxList(CheckBoxListDriverSize, Constants.DRIVER_SIZE, result);
+
+        FillCheckBoxList(DropDownListMaintanance, Constants.MAINTANANCE, car == null ? null : car.MAINTANANCE);
+        FillCheckBoxList(DropDownListFuelConsume, Constants.FEUL_CONSUMING, car == null ? null : car.FUEL_CONSUME);
+        FillCheckBoxList(DropDownListSafety, Constants.SAFETY, car == null ? null : car.SECURE);
+        FillCheckBoxList(DropDownListMultiDriver, Constants.MULTI_DRIVER, car == null ? null : car.MULTI_DRIVER);
+        FillCheckBoxList(ddSurface, Constants.ROAD, car == null ? null : car.ROAD);
+        FillCheckBoxList(ddVisualPerspective, Constants.VISUAL_SPACE, car == null ? null : car.VISUAL_SPACE);
+        FillCheckBoxList(ddIgnition, Constants.IGNITION, car == null ? null : car.IGNITION);
     }
-    private void FillCheckBoxList(ListControl list, int id, int? value, int typeId)
+    private void FillCheckBoxList(ListControl list, int id, int? value)
     {
-        list.DataSource = admin.GetAnswer(typeId, id);
+        int carMainType;
+        int.TryParse(ddMainType.SelectedValue, out carMainType);
+
+        list.DataSource = admin.GetAnswer(car == null ? carMainType : car.MAIN_TYPE.Value, id);
         list.DataTextField = "NAME";
         list.DataValueField = "ID";
         list.DataBind();
 
-        if (value.HasValue)
+        if (value.HasValue && value.Value != -1)
         {
             list.SelectedValue = value.Value.ToString();
         }
     }
-    private void FillMultiCheckBoxList(ListControl list, int id, List<int> values, int typeId)
+    private void FillMultiCheckBoxList(ListControl list, int id, List<int> values)
     {
-        list.DataSource = admin.GetAnswer(typeId, id);
+        int carMainType;
+        int.TryParse(ddMainType.SelectedValue, out carMainType);
+
+        list.DataSource = admin.GetAnswer(car == null ? carMainType : car.MAIN_TYPE.Value, id);
         list.DataTextField = "NAME";
         list.DataValueField = "ID";
         list.DataBind();
@@ -146,21 +132,14 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             }
         }
     }
-    private void FillDropDownList(DropDownList dropDownList, int id, int? defaultValue, int typeId)
+    private void FillDropDownList(DropDownList dropDownList, int id, int? defaultValue)
     {
-        dropDownList.DataSource = admin.GetAnswer(typeId, id);
+        int carMainType;
+        int.TryParse(ddMainType.SelectedValue, out carMainType);
+
+        dropDownList.DataSource = admin.GetAnswer(car == null ? carMainType : car.MAIN_TYPE.Value, id);
         dropDownList.DataTextField = "NAME";
         dropDownList.DataValueField = "ID";
-        dropDownList.DataBind();
-
-        if (defaultValue.HasValue)
-            dropDownList.SelectedValue = defaultValue.Value.ToString();
-    }
-    private void FillDropDownList2(DropDownList dropDownList, int id, int? defaultValue)
-    {
-        dropDownList.DataTextField = "VALUE";
-        dropDownList.DataValueField = "ID";
-        dropDownList.DataSource = admin.GetLookupDetails(id);
         dropDownList.DataBind();
 
         if (defaultValue.HasValue)
@@ -186,7 +165,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         ddSubType.DataSource = admin.GetSubTypes(carMainType);
         ddSubType.DataBind();
 
-        InitLists(carMainType);
+        InitLists();
     }
     protected void DropDownListModel_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -353,7 +332,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             TextBoxAgainst.Text = car.OPPINION_AGAINST;
             TextBoxPrice.Text = car.PRICE.ToString();
 
-            InitLists(car, car.MAIN_TYPE.Value);
+            InitLists();
         }
         catch
         {
