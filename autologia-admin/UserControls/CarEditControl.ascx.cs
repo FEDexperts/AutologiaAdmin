@@ -11,28 +11,33 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 {
     Cars car = null;
     Admin admin = new Admin();
-    int carId;
+    int carId = 0;
 
     public enum EditTypeCode
     {
         EtNew = 0,
         EtModify = 1
     }
+
     public EditTypeCode EditType
     {
         get;
         set;
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (Request.QueryString != null && Request.QueryString["id"] != null)
         {
-            EditType = EditTypeCode.EtNew;
-            if (Request.QueryString != null && Request.QueryString["id"] != null)
+            carId = Convert.ToInt32(Request.QueryString["id"]);
+            car = admin.GetCar(carId);
+        }
+
+        if (!IsPostBack)
+        {
+            if (carId != 0)
             {
                 EditType = EditTypeCode.EtModify;
-                carId = Convert.ToInt32(Request.QueryString["id"]);
-                car = admin.GetCar(carId);
                 InitEdit();
             }
             else
@@ -69,12 +74,56 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         ddSubType.DataSource = admin.GetSubTypes(carMainType);
         ddSubType.DataBind();
 
+        DropDownListYear.DataSource = admin.GetYears(1970, 100);
+        DropDownListYear.DataBind();
+
         InitLists();
+    }
+
+    private void InitEdit()
+    {
+        try
+        {
+            DropDownListManufactor.DataSource = admin.GetCarManufactors().OrderBy(a => a.NAME);
+            DropDownListManufactor.DataBind();
+            DropDownListManufactor.SelectedValue = car.MANUFACTOR.ToString();
+            int carManufactorer = string.IsNullOrEmpty(DropDownListManufactor.SelectedValue) ? 0 : int.Parse(DropDownListManufactor.SelectedValue);
+
+            DropDownListModel.DataSource = admin.GetCarModels(carManufactorer);
+            DropDownListModel.DataBind();
+            DropDownListModel.SelectedValue = car.MODEL.ToString();
+            int carModelId = string.IsNullOrEmpty(DropDownListModel.SelectedValue) ? 0 : int.Parse(DropDownListModel.SelectedValue);
+
+            DropDownListSubModel.DataSource = admin.GetCarSubModels(carManufactorer, carModelId);
+            DropDownListSubModel.DataBind();
+            DropDownListSubModel.SelectedValue = car.SUB_MODEL.ToString();
+
+            ddMainType.DataSource = admin.GetMainTypes();
+            ddMainType.DataBind();
+            ddMainType.SelectedValue = car.MAIN_TYPE.ToString();
+
+            ddSubType.DataSource = admin.GetSubTypes(car.MAIN_TYPE.Value);
+            ddSubType.DataBind();
+            ddSubType.SelectedValue = car.SUB_TYPE.ToString();
+
+            DropDownListYear.DataSource = admin.GetYears(1980, 100);
+            DropDownListYear.DataBind();
+            DropDownListYear.SelectedValue = car.YEAR.ToString();
+
+            TextBoxFor.Text = car.OPPINION_FOR;
+            TextBoxAgainst.Text = car.OPPINION_AGAINST;
+            TextBoxPrice.Text = car.PRICE.ToString();
+
+            InitLists();
+        }
+        catch
+        {
+
+        }
     }
 
     private void InitLists()
     {
-        FillDropDownList(DropDownListYear, Constants.YEAR, car == null ? -1 : car.YEAR);
         FillDropDownList(DropDownListCountry, Constants.COUNTRY, car == null ? null : car.COUNTRY);
         FillCheckBoxList(ddSeats, Constants.SEATS, car == null ? null : car.SEATS);
         FillCheckBoxList(DropDownListDors, Constants.DORS, car == null ? null : car.DORS);
@@ -98,6 +147,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         FillCheckBoxList(ddVisualPerspective, Constants.VISUAL_SPACE, car == null ? null : car.VISUAL_SPACE);
         FillCheckBoxList(ddIgnition, Constants.IGNITION, car == null ? null : car.IGNITION);
     }
+
     private void FillCheckBoxList(ListControl list, int id, int? value)
     {
         int carMainType;
@@ -113,6 +163,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             list.SelectedValue = value.Value.ToString();
         }
     }
+
     private void FillMultiCheckBoxList(ListControl list, int id, List<int> values)
     {
         int carMainType;
@@ -132,6 +183,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             }
         }
     }
+
     private void FillDropDownList(DropDownList dropDownList, int id, int? defaultValue)
     {
         int carMainType;
@@ -145,6 +197,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         if (defaultValue.HasValue)
             dropDownList.SelectedValue = defaultValue.Value.ToString();
     }
+
     protected void DropDownListManufactor_SelectedIndexChanged(object sender, EventArgs e)
     {
         int carMannufactorerId = string.IsNullOrEmpty(DropDownListManufactor.SelectedValue) ? 0 : int.Parse(DropDownListManufactor.SelectedValue);
@@ -157,6 +210,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         DropDownListSubModel.DataSource = admin.GetCarSubModels(carMannufactorerId, carModelId);
         DropDownListSubModel.DataBind();
     }
+
     protected void ddMainTypeChanged(object sender, EventArgs e)
     {
         int carMainType;
@@ -167,11 +221,13 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 
         InitLists();
     }
+
     protected void DropDownListModel_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownListSubModel.DataSource = admin.GetCarSubModels(int.Parse(DropDownListManufactor.SelectedValue), int.Parse(DropDownListModel.SelectedValue));
         DropDownListSubModel.DataBind();
     }
+
     public void Add()
     {
         int price;
@@ -292,6 +348,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
                 break;
         }
     }
+
     private List<int> GetListItemsIds(ListControl list)
     {
         return (from ListItem p in list.Items where p.Selected select int.Parse(p.Value)).ToList();
@@ -302,79 +359,42 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         return (from ListItem p in checkBoxList.Items where p.Selected select p.Text).ToList();
     }
 
-    private void InitEdit()
-    {
-        try
-        {
-            DropDownListManufactor.DataSource = admin.GetCarManufactors().OrderBy(a => a.NAME);
-            DropDownListManufactor.DataBind();
-            DropDownListManufactor.SelectedValue = car.MANUFACTOR.ToString();
-            int carManufactorer = string.IsNullOrEmpty(DropDownListManufactor.SelectedValue) ? 0 : int.Parse(DropDownListManufactor.SelectedValue);
-
-            DropDownListModel.DataSource = admin.GetCarModels(carManufactorer);
-            DropDownListModel.DataBind();
-            DropDownListModel.SelectedValue = car.MODEL.ToString();
-            int carModelId = string.IsNullOrEmpty(DropDownListModel.SelectedValue) ? 0 : int.Parse(DropDownListModel.SelectedValue);
-
-            DropDownListSubModel.DataSource = admin.GetCarSubModels(carManufactorer, carModelId);
-            DropDownListSubModel.DataBind();
-            DropDownListSubModel.SelectedValue = car.SUB_MODEL.ToString();
-
-            ddMainType.DataSource = admin.GetMainTypes();
-            ddMainType.DataBind();
-            ddMainType.SelectedValue = car.MAIN_TYPE.ToString();
-
-            ddSubType.DataSource = admin.GetSubTypes(car.MAIN_TYPE.Value);
-            ddSubType.DataBind();
-            ddSubType.SelectedValue = car.SUB_TYPE.ToString();
-
-            TextBoxFor.Text = car.OPPINION_FOR;
-            TextBoxAgainst.Text = car.OPPINION_AGAINST;
-            TextBoxPrice.Text = car.PRICE.ToString();
-
-            InitLists();
-        }
-        catch
-        {
-
-        }
-    }
-
     public bool Update(out string error)
     {
         error = string.Empty;
         try
         {
-            //int.TryParse(ddMainType.SelectedValue, out car.MainType);
-            //int.TryParse(ddSubType.SelectedValue, out car.SubType);
-            //int.TryParse(DropDownListManufactor.SelectedValue, out car.Manufactor);
-            //int.TryParse(DropDownListModel.SelectedValue, out car.Model);
-            //int.TryParse(DropDownListSubModel.SelectedValue, out car.SubModel);
+            car.MAIN_TYPE = Convert.ToInt32(ddMainType.SelectedValue);
+            car.SUB_TYPE = Convert.ToInt32(ddSubType.SelectedValue);
+            car.MANUFACTOR = Convert.ToInt32(DropDownListManufactor.SelectedValue);
+            car.MODEL = Convert.ToInt32(DropDownListModel.SelectedValue);
+            car.SUB_MODEL = Convert.ToInt32(DropDownListSubModel.SelectedValue);
 
-            //car.Country = Convert.ToInt32(DropDownListCountry.SelectedValue);
-            //car.Year = Convert.ToInt32(DropDownListYear.SelectedValue);
-            //car.Seats = Convert.ToInt32(ddSeats.SelectedValue);
-            //car.Dors = Convert.ToInt32(DropDownListDors.SelectedValue);
-            //car.Geer = Convert.ToInt32(CheckBoxListGeer.SelectedValue);
-            //car.Trunk = Convert.ToInt32(DropDownListTrunkSize.SelectedValue);
+            car.COUNTRY = Convert.ToInt32(DropDownListCountry.SelectedValue);
+            car.YEAR = Convert.ToInt32(DropDownListYear.SelectedValue);
+            car.SEATS = Convert.ToInt32(ddSeats.SelectedValue);
+            car.DORS = Convert.ToInt32(DropDownListDors.SelectedValue);
+            car.GEER = Convert.ToInt32(CheckBoxListGeer.SelectedValue);
+            car.TRUNK = Convert.ToInt32(DropDownListTrunkSize.SelectedValue);
+            car.RESPONSE = Convert.ToInt32(DropDownListResponse.SelectedValue);
+            car.FUEL_TYPE = Convert.ToInt32(ddFeulType.SelectedValue);
+            car.SECURE = Convert.ToInt32(DropDownListSafety.SelectedValue);
+            car.FUEL_CONSUME = Convert.ToInt32(DropDownListFuelConsume.SelectedValue);
+            car.MULTI_DRIVER = Convert.ToInt32(DropDownListMultiDriver.SelectedValue);
+            car.SIZE = Convert.ToInt32(DropDownListCarSize.SelectedValue);
+            car.MAINTANANCE = Convert.ToInt32(DropDownListMaintanance.SelectedValue);
+            car.DESCRIPTION = TextBoxDescription.Text;
+            car.OPPINION_FOR = TextBoxFor.Text;
+            car.OPPINION_AGAINST = TextBoxAgainst.Text;
+            car.LINKS = TextBoxLink.Text;
+            car.ACCESSORY = Convert.ToInt32(DropDownListAccessoriesLevel.SelectedValue);
+
+            car.PRICE = Convert.ToInt32(TextBoxPrice.Text);
+
             //car.Driver = GetListItemsIds(CheckBoxListDriverSize);
-            //car.Response = Convert.ToInt32(DropDownListResponse.SelectedValue);
-            //car.FuelType = Convert.ToInt32(ddFeulType.SelectedValue);
-            //car.Secure = Convert.ToInt32(DropDownListSafety.SelectedValue);
-            //car.FuelConsume = Convert.ToInt32(DropDownListFuelConsume.SelectedValue);
-            //car.MultiDriver = Convert.ToInt32(DropDownListMultiDriver.SelectedValue);
             //car.Perception = GetListItemsIds(CheckBoxListPerception);
-            //car.Size = Convert.ToInt32(DropDownListCarSize.SelectedValue);
-            //car.Maintanance = Convert.ToInt32(DropDownListMaintanance.SelectedValue);
-            //car.Description = TextBoxDescription.Text;
-            //car.For = TextBoxFor.Text;
-            //car.Against = TextBoxAgainst.Text;
-            //car.Links = TextBoxLink.Text;
-            //car.Accessories = Convert.ToInt32(DropDownListAccessoriesLevel.SelectedValue);
 
-            //int.TryParse(TextBoxPrice.Text, out car.Price);
-
-            admin.UpdateCar();
+            admin.UpdateCar(car);
 
             return true;
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace AutologiaDataAccess
@@ -21,6 +23,12 @@ namespace AutologiaDataAccess
         public string MAINTANANCE { get; set; }
         public string FUEL_CONSUME { get; set; }
         public string SECURE { get; set; }
+    }
+
+    public class NameValuePair
+    {
+        public string NAME { get; set; }
+        public int VALUE { get; set; }
     }
 
     public class Admin
@@ -305,7 +313,26 @@ namespace AutologiaDataAccess
             }
         }
 
-        public void UpdateCar() { }
+        public void UpdateCar(Cars car)
+        {
+            using (var ctx = new autologiaEntities())
+            {
+                Cars carUpdate = ctx.Cars.SingleOrDefault(p => p.ID == car.ID);
+
+                var carFields = TypeDescriptor.GetProperties(car).Cast<PropertyDescriptor>();
+                var carUpdateFields = TypeDescriptor.GetProperties(carUpdate).Cast<PropertyDescriptor>();
+                foreach (var field in carFields)
+                {
+                    var property = carUpdateFields.FirstOrDefault(prop => prop.Name == field.Name && prop.PropertyType.BaseType.Name != "Object");
+                    if (property != null)
+                    {
+                        property.SetValue(carUpdate, field.GetValue(car));
+                    }
+                }
+
+                ctx.SaveChanges();
+            }
+        }
 
         public List<Answers> GetMainTypes()
         {
@@ -349,6 +376,18 @@ namespace AutologiaDataAccess
                         where b.QUESTION_ID == questionId && b.TYPE_ID == type
                         select a).ToList();
             }
+        }
+
+        public List<NameValuePair> GetYears(int start, int years)
+        {
+            List<NameValuePair> yearsList = new List<NameValuePair>();
+            var startId = 541;
+            for (var year = start; year <= start + years; year++)
+            {
+                yearsList.Add(new NameValuePair() { NAME = year.ToString(), VALUE = startId });
+                startId++;
+            }
+            return yearsList;
         }
     }
 }
