@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="762c8b5414df4b49a7b4c7d080c81bb7" Name="Diagram1">
-        <EntityTypeShape EntityType="autologiaModel.CarMainType" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarManufactors" Width="1.5" PointX="5.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarModel" Width="1.5" PointX="8" PointY="9.5" IsExpanded="true" />
+      <Diagram DiagramId="762c8b5414df4b49a7b4c7d080c81bb7" Name="Diagram1" ShowGrid="true">
+        <EntityTypeShape EntityType="autologiaModel.CarMainType" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.CarManufactors" Width="1.5" PointX="5.75" PointY="9.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.CarModel" Width="1.5" PointX="8" PointY="9.5" IsExpanded="false" />
         <EntityTypeShape EntityType="autologiaModel.Cars" Width="1.5" PointX="12.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarSubModel" Width="1.5" PointX="10.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarSubType" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.LookupDetails" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.MainLookup" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.MandatoryQuestions" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.Points" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.QuestionsAnswers" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.Users" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.AdminUsers" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.Answers" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarMultiAnswer" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.CarsEx" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.Menu" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="autologiaModel.Questions" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="autologiaModel.CarSubModel" Width="1.5" PointX="10.25" PointY="9.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.CarSubType" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.LookupDetails" Width="1.5" PointX="8" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.MainLookup" Width="1.5" PointX="5.75" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.MandatoryQuestions" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.Points" Width="1.5" PointX="3" PointY="3.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.QuestionsAnswers" Width="1.5" PointX="3" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.Users" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.AdminUsers" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.Answers" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.CarMultiAnswer" Width="1.5" PointX="3.5" PointY="2.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.CarsEx" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.Menu" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="autologiaModel.Questions" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="false" />
         <AssociationConnector Association="autologiaModel.CarModel_fk" ManuallyRouted="false" />
         <AssociationConnector Association="autologiaModel.Cars_fk" ManuallyRouted="false" />
         <AssociationConnector Association="autologiaModel.CarSubModel_fk" ManuallyRouted="false" />
