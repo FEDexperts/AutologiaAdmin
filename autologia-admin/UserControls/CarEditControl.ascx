@@ -33,7 +33,7 @@
                     ארץ ייצור
                 </div>
                 <div>
-                    <asp:DropDownList ID="DropDownListCountry" runat="server" Width="200px">
+                    <asp:DropDownList ID="DropDownListCountry" runat="server" Width="200px" DataTextField="NAME" DataValueField="VALUE">
                     </asp:DropDownList>
                 </div>
                 <div style="font-weight: bold">

@@ -77,6 +77,9 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
         DropDownListYear.DataSource = admin.GetYears(1970, 100);
         DropDownListYear.DataBind();
 
+        DropDownListCountry.DataSource = admin.GetCountries();
+        DropDownListCountry.DataBind();
+
         InitLists();
     }
 
@@ -110,6 +113,10 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
             DropDownListYear.DataBind();
             DropDownListYear.SelectedValue = car.YEAR.ToString();
 
+            DropDownListCountry.DataSource = admin.GetCountries();
+            DropDownListCountry.DataBind();
+            DropDownListYear.SelectedValue = car.COUNTRY.ToString();
+
             TextBoxFor.Text = car.OPPINION_FOR;
             TextBoxAgainst.Text = car.OPPINION_AGAINST;
             TextBoxPrice.Text = car.PRICE.ToString();
@@ -124,7 +131,7 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 
     private void InitLists()
     {
-        FillDropDownList(DropDownListCountry, Constants.COUNTRY, car == null ? null : car.COUNTRY);
+        //FillDropDownList(DropDownListCountry, Constants.COUNTRY, car == null ? null : car.COUNTRY);
         FillCheckBoxList(ddSeats, Constants.SEATS, car == null ? null : car.SEATS);
         FillCheckBoxList(DropDownListDors, Constants.DORS, car == null ? null : car.DORS);
         FillCheckBoxList(ddFeulType, Constants.FEUL_TYPE, car == null ? null : car.FUEL_TYPE);
@@ -391,10 +398,10 @@ public partial class UserControls_CarEditControl : System.Web.UI.UserControl
 
             car.PRICE = Convert.ToInt32(TextBoxPrice.Text);
 
-            //car.Driver = GetListItemsIds(CheckBoxListDriverSize);
-            //car.Perception = GetListItemsIds(CheckBoxListPerception);
+            List<int> driverSize = GetListItemsIds(CheckBoxListDriverSize);
+            List<int> Perception = GetListItemsIds(CheckBoxListPerception);
 
-            admin.UpdateCar(car);
+            admin.UpdateCar(car, driverSize, Perception);
 
             return true;
         }

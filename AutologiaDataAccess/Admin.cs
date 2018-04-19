@@ -313,7 +313,7 @@ namespace AutologiaDataAccess
             }
         }
 
-        public void UpdateCar(Cars car)
+        public void UpdateCar(Cars car, List<int> driverSize, List<int> perception)
         {
             using (var ctx = new autologiaEntities())
             {
@@ -330,8 +330,38 @@ namespace AutologiaDataAccess
                     }
                 }
 
+                IQueryable<CarMultiAnswer> carMultiAnswer = ctx.CarMultiAnswer.Where(p => p.CAR_ID == car.ID);
+                ctx.CarMultiAnswer.RemoveRange(carMultiAnswer);
+
+                //driverSize.ForEach(item =>
+                //{
+                //    CarMultiAnswer _carMultiAnswer = new CarMultiAnswer()
+                //    {
+                //        CAR_ID = car.ID,
+                //        QUESTION_ID = 11,
+                //        ANSWER_ID = item
+                //    };
+                //    ctx.CarMultiAnswer.Add(_carMultiAnswer);
+                //});
+
+                //perception.ForEach(item =>
+                //{
+                //    CarMultiAnswer _carMultiAnswer = new CarMultiAnswer()
+                //    {
+                //        CAR_ID = car.ID,
+                //        QUESTION_ID = 10,
+                //        ANSWER_ID = item
+                //    };
+                //    ctx.CarMultiAnswer.Add(_carMultiAnswer);
+                //});
+
                 ctx.SaveChanges();
             }
+        }
+
+        public void UpdateCarMultiAnswer()
+        {
+
         }
 
         public List<Answers> GetMainTypes()
@@ -388,6 +418,18 @@ namespace AutologiaDataAccess
                 startId++;
             }
             return yearsList;
+        }
+
+        public List<NameValuePair> GetCountries()
+        {
+            using (var ctx = new autologiaEntities())
+            {
+                List<NameValuePair> countries = ctx.LookupDetails.Where(p => p.MAIN_LOOKUP_ID == 2).Select(p => new NameValuePair() {
+                    NAME = p.VALUE,
+                    VALUE = p.ID
+                }).ToList();
+                return countries;
+            }
         }
     }
 }
